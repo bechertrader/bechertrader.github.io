@@ -3,554 +3,134 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Becher Trader</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Becher Trader: inteligência artificial para empresas e plataformas para a formação profissional de traders. Pontal do Paraná, PR.">
+<title>Becher Trader | Inteligência artificial para a sua empresa</title>
+<meta name="description" content="Consultoria e mentoria em inteligência artificial para empresas, cursos de IA e programação e plataformas para a formação profissional de traders. Pontal do Paraná, PR.">
+<link rel="icon" href="emblema.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap">
-<style>
-/* Layout: faixa escura de marca, hero em duas colunas (texto + logomarca), seções empilhadas com coluna de leitura de ~65 caracteres. */
-:root{
-  --bg:#060c24;          /* fundo Royal Blue */
-  --nav:#091640;         /* barra e superfícies elevadas */
-  --panel:#0c1c4e;       /* cartões */
-  --line:#1f3478;        /* bordas */
-  --acc:#60b8ff;         /* azul de destaque */
-  --gold:#c8a84b;        /* dourado da marca */
-  --fg:#eef4ff;          /* texto principal */
-  --sub:#b9cbee;         /* texto secundário, ainda com alto contraste */
-  --zap:#2fbf71;         /* verde do botão de WhatsApp */
-  --zap-ink:#04210f;
-  --f-display:"Bebas Neue", "Oswald", Impact, "Arial Narrow", sans-serif;
-  --f-body:"Rajdhani", "Segoe UI", Roboto, Arial, sans-serif;
-  --f-mono:"JetBrains Mono", Consolas, "Courier New", monospace;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{
-  background:var(--bg);color:var(--fg);
-  font-family:var(--f-body);font-weight:500;font-size:21px;line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--nav)}
-a{color:var(--acc)}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--f-display);font-weight:400;letter-spacing:.02em;line-height:1.02;text-wrap:balance;margin:0}
-p{margin:0}
-.eyebrow{font-family:var(--f-mono);font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
-
-/* Barra superior */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--nav);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;gap:20px;padding-block:10px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg);margin-right:auto}
-.brand img{width:52px;height:auto}
-.brand b{font-family:var(--f-display);font-weight:400;font-size:32px;letter-spacing:.04em;line-height:1}
-.brand b span{color:var(--acc)}
-.menu{display:flex;gap:22px;flex-wrap:wrap}
-.menu a{color:var(--sub);text-decoration:none;font-weight:700;font-size:20px;text-transform:uppercase;letter-spacing:.06em}
-.menu a:hover{color:var(--fg)}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:12px 26px;border-radius:6px;
-  font-family:var(--f-body);font-weight:700;font-size:21px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:2px solid transparent;transition:transform .15s,background .15s}
-.btn:hover{transform:translateY(-1px)}
-.btn svg{width:26px;height:26px;flex:none}
-.btn-zap{background:var(--zap);color:var(--zap-ink)}
-.btn-primary{background:var(--acc);color:var(--bg)}
-.btn-ghost{background:transparent;color:var(--fg);border-color:var(--acc)}
-.top .btn{min-height:48px;padding:8px 18px;font-size:18px}
-
-/* Hero */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
-  background:linear-gradient(100deg,rgba(6,12,36,.97) 30%,rgba(6,12,36,.72)),url("fundo.jpg") center/cover no-repeat,var(--bg)}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:64px 72px}
-.hero-text{display:grid;gap:24px;min-width:0}
-.hero h1{font-size:clamp(56px,8vw,104px);color:var(--fg)}
-.hero h1 em{font-style:normal;color:var(--acc)}
-.hero .lead{font-size:24px;color:var(--sub);max-width:34ch}
-.hero .lead strong{color:var(--fg);font-weight:700}
-.cta{display:flex;gap:14px;flex-wrap:wrap}
-.hero-logo{justify-self:center;width:100%;max-width:520px;filter:drop-shadow(0 18px 40px rgba(96,184,255,.18))}
-
-/* Seções */
-section{padding-block:80px;border-bottom:1px solid var(--line)}
-.head{display:grid;gap:14px;margin-bottom:40px;max-width:760px}
-.head h2{font-size:clamp(46px,6vw,72px)}
-.head p{font-size:22px;color:var(--sub)}
-
-/* Sobre */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.about-text{display:grid;gap:20px;min-width:0;max-width:62ch}
-.about-text p{font-size:22px;color:var(--sub)}
-.about-text p strong{color:var(--fg)}
-.roles{display:flex;gap:10px;flex-wrap:wrap}
-.roles span{font-family:var(--f-mono);font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--gold);color:var(--gold);border-radius:4px}
-.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0;border-left:2px solid var(--line)}
-.timeline li{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:14px 0 14px 22px;position:relative}
-.timeline li::before{content:"";position:absolute;left:-8px;top:24px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--acc)}
-.timeline li:last-child::before{background:var(--gold);border-color:var(--gold)}
-.timeline time{font-family:var(--f-mono);font-weight:700;font-size:20px;color:var(--acc);font-variant-numeric:tabular-nums}
-.timeline span{font-size:21px;color:var(--fg)}
-
-/* IA para empresas */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.step{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:30px 26px;display:grid;gap:14px;align-content:start;min-width:0}
-.step .n{font-family:var(--f-mono);font-size:16px;font-weight:700;color:var(--gold);letter-spacing:.1em}
-.step h3{font-size:38px;color:var(--fg)}
-.step p{font-size:21px;color:var(--sub)}
-.agents{margin-top:44px;display:grid;gap:18px}
-.agents h3{font-size:36px}
-.agent-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}
-.agent-list li{padding:16px 0;border-top:1px solid var(--line);display:grid;gap:4px;min-width:0}
-.agent-list b{font-weight:700;font-size:22px;color:var(--fg)}
-.agent-list span{font-size:20px;color:var(--sub)}
-.note{margin-top:28px;font-size:20px;color:var(--sub);max-width:70ch}
-.note strong{color:var(--gold)}
-
-/* Cursos */
-.cursos-top{display:grid;grid-template-columns:1fr minmax(0,420px);gap:32px;align-items:center;margin-bottom:40px}
-.cursos-top .head{margin-bottom:0}
-.destaque{display:grid;gap:12px;padding:26px 28px;border-radius:8px;background:var(--panel);border:2px solid var(--gold);text-decoration:none;color:var(--fg);transition:transform .15s}
-.destaque:hover{transform:translateY(-2px)}
-.destaque strong{font-family:var(--f-display);font-weight:400;font-size:36px;line-height:1.05;letter-spacing:.02em;color:var(--fg);text-wrap:balance}
-.destaque span{font-size:21px;color:var(--sub)}
-.destaque em{font-style:normal;font-weight:700;font-size:20px;text-transform:uppercase;letter-spacing:.05em;color:var(--gold)}
-.tracks{display:grid;grid-template-columns:1fr 1fr;gap:36px}
-.track{display:grid;gap:18px;align-content:start;min-width:0}
-.track-label{font-family:var(--f-mono);font-size:17px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding-bottom:10px;border-bottom:2px solid var(--gold)}
-.course{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:28px 26px;display:grid;gap:12px;min-width:0}
-.course h3{font-size:40px;color:var(--fg)}
-.course p{font-size:21px;color:var(--sub)}
-.course ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
-.course li{font-size:21px;color:var(--fg);padding-left:26px;position:relative}
-.course li::before{content:"";position:absolute;left:0;top:.6em;width:12px;height:12px;border-radius:2px;background:var(--acc)}
-
-/* Trader */
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.prod{border-top:4px solid var(--acc);background:var(--nav);padding:28px 26px;display:grid;gap:14px;align-content:start;min-width:0}
-.prod h3{font-size:44px;color:var(--fg)}
-.prod p{font-size:21px;color:var(--sub)}
-.status{justify-self:start;font-family:var(--f-mono);font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:4px;background:rgba(200,168,75,.14);color:var(--gold);border:1px solid var(--gold)}
-.market{margin-top:24px;font-family:var(--f-mono);font-size:17px;color:var(--sub);letter-spacing:.04em}
-
-/* Contato */
-.contact{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
-form{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:30px;display:grid;gap:20px;min-width:0}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.field{display:grid;gap:8px;min-width:0}
-label{font-weight:700;font-size:20px;color:var(--fg)}
-input,select,textarea{width:100%;font:inherit;font-size:21px;color:var(--fg);background:var(--bg);border:2px solid var(--line);border-radius:6px;padding:12px 14px;min-height:56px}
-textarea{min-height:130px;resize:vertical}
-input::placeholder,textarea::placeholder{color:#8ea3cf}
-select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--acc) 50%),linear-gradient(135deg,var(--acc) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 15px) 50%;background-size:7px 7px;background-repeat:no-repeat;padding-right:44px}
-.form-foot{font-size:19px;color:var(--sub)}
-.err{color:#ffb4a8;font-weight:700;font-size:20px}
-.channels{display:grid;gap:14px}
-.ch{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:center;padding:20px 22px;background:var(--nav);border:1px solid var(--line);border-radius:8px;min-width:0}
-.ch svg{grid-row:span 2;width:34px;height:34px;color:var(--acc)}
-.ch .k{font-family:var(--f-mono);font-size:15px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
-.ch .v{font-size:23px;font-weight:700;color:var(--fg);word-break:break-word;user-select:all}
-.ch a.v{text-decoration:none}
-.ch a.v:hover{color:var(--acc)}
-.ch .actions{grid-column:2;display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
-.mini{font:inherit;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.05em;padding:6px 14px;min-height:40px;border-radius:4px;border:1px solid var(--acc);background:transparent;color:var(--acc);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
-.mini:hover{background:rgba(96,184,255,.12)}
-
-footer{padding-block:48px 110px}
-footer .wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
-footer img{width:72px}
-footer p{font-size:19px;color:var(--sub)}
-footer b{font-family:var(--f-display);font-weight:400;font-size:30px;color:var(--fg);letter-spacing:.04em;display:block}
-
-.float-zap{position:fixed;z-index:30;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));
-  box-shadow:0 10px 30px rgba(0,0,0,.45);border-radius:40px;padding-inline:22px}
-
-@media (max-width:980px){
-  .hero .wrap{grid-template-columns:1fr;padding-block:44px 52px}
-  .hero-logo{max-width:400px;order:-1}
-  .about,.contact,.cursos-top{grid-template-columns:1fr}
-  .steps,.products,.tracks{grid-template-columns:1fr}
-  .agent-list{grid-template-columns:1fr}
-}
-@media (max-width:640px){
-  body{font-size:20px}
-  .menu{display:none}
-  .brand b{font-size:28px}
-  section{padding-block:56px}
-  .row2{grid-template-columns:1fr}
-  form{padding:22px}
-  .timeline li{grid-template-columns:72px 1fr}
-  .float-zap span{display:none}
-  .float-zap{padding-inline:16px;min-width:60px}
-}
-
-/* ===== Balão de atendimento com IA ===== */
-.chat-fab{position:fixed;z-index:31;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(96px + env(safe-area-inset-bottom,0px));
-  display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 22px;border-radius:40px;border:2px solid var(--gold);
-  background:var(--nav);color:var(--fg);font:inherit;font-weight:700;font-size:20px;letter-spacing:.03em;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.45)}
-.chat-fab[hidden]{display:none}
-.chat-fab svg{width:26px;height:26px;color:var(--gold)}
-.chat-fab:hover{background:var(--panel)}
-.chat-box{padding:0;margin:0;position:fixed;z-index:40;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
-  width:min(440px,calc(100vw - 32px));height:min(640px,calc(100dvh - 32px));display:flex;flex-direction:column;
-  background:var(--nav);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.6);overflow:hidden}
-.chat-box[hidden]{display:none}
-.chat-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--panel);border-bottom:1px solid var(--line)}
-.chat-head img{width:40px;height:auto}
-.chat-head b{display:block;font-size:20px;line-height:1.2}
-.chat-head small{display:block;font-size:16px;color:var(--sub)}
-.chat-close{margin-left:auto;min-width:44px;min-height:44px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--fg);font-size:24px;cursor:pointer}
-.chat-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
-.msg{max-width:88%;padding:12px 14px;border-radius:12px;font-size:19px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}
-.msg.bot{align-self:flex-start;background:var(--panel);border:1px solid var(--line);color:var(--fg)}
-.msg.eu{align-self:flex-end;background:#1d4fbf;color:#fff}
-.msg.humano{border-color:var(--gold)}
-.msg .zap{display:inline-block;margin-top:8px;color:var(--zap);font-weight:700}
-.chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:var(--nav)}
-.chat-form textarea{flex:1;resize:none;min-height:52px;max-height:120px;padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:inherit;font-size:19px}
-.chat-form textarea::placeholder{color:var(--sub)}
-.chat-form button{min-width:96px;border:0;border-radius:10px;background:var(--gold);color:#1a1405;font:inherit;font-weight:700;font-size:19px;cursor:pointer}
-.chat-form button:disabled{opacity:.6;cursor:wait}
-.chat-note{margin:0;padding:0 14px 12px;font-size:15px;color:var(--sub);background:var(--nav)}
-.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media (max-width:640px){.chat-fab span{display:none}.chat-fab{padding:0 16px}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-chat" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c-5.4 0-9.8 4-9.8 9 0 1.9.6 3.6 1.7 5.1L2.6 21.6l5.5-1.6c1.2.5 2.5.8 3.9.8 5.4 0 9.8-4 9.8-9s-4.4-9.6-9.8-9.6zm0 16.6c-1.2 0-2.4-.3-3.4-.8l-.4-.2-3.1.9.8-3-.3-.4a6.9 6.9 0 0 1-1.4-4.1c0-3.9 3.5-7 7.8-7s7.8 3.1 7.8 7-3.5 7.6-7.8 7.6zm4.1-5.3c-.2-.1-1.3-.7-1.6-.7-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-.9-1-1.2-1.6-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1.1.9.4 1.8 1 2.6 1.1 1.6 2.5 2.8 4.3 3.5.5.2 1 .3 1.5.4.5.1 1.1 0 1.6-.3.4-.2.7-.6.8-1 .1-.2.1-.5 0-.7-.1-.3-.3-.4-.6-.5z"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 5h18v14H3z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M3 6l9 7 9-7"/></symbol>
   <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path fill="currentColor" d="M10 9l5 3-5 3z"/></symbol>
+  <symbol id="i-ajuda" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.2 9.3a2.9 2.9 0 0 1 5.6 1c0 1.9-2.8 2.4-2.8 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.3" fill="currentColor"/></symbol>
 </svg>
-
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="Becher Trader, início">
+    <a class="brand" href="index.html" aria-label="Becher Trader, página inicial">
       <img src="emblema.png" alt="" width="52" height="49">
       <b>BECHER <span>TRADER</span></b>
     </a>
-    <nav class="menu" aria-label="Seções">
-      <a href="#sobre">Sobre</a>
-      <a href="#cursos">Cursos</a>
-      <a href="#ia">IA para empresas</a>
-      <a href="#traders">Traders</a>
-      <a href="#contato">Contato</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-controls="menu" aria-expanded="false">Menu</button>
+    <nav class="menu" id="menu" aria-label="Páginas do site">
+      <a href="index.html" aria-current="page">Início</a>
+      <a href="consultoria.html">Consultoria</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="plataformas.html">Traders</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html">Contato</a>
+      <a class="menu-cta" href="contato.html?assunto=consultoria">Quero um diagnóstico</a>
     </nav>
   </div>
 </header>
 
-<main id="inicio">
-  <div class="hero">
-    <div class="wrap">
-      <div class="hero-text">
-        <p class="eyebrow">Tecnologia · Pontal do Paraná, PR</p>
-        <h1>Gerando Riqueza com <em>Tecnologia</em></h1>
-        <p class="lead">Cursos de <strong>inteligência artificial e programação</strong>, agentes de IA para empresas e plataformas para a <strong>formação profissional de traders</strong>.</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="#contato">Fale com a gente</a>
-          <a class="btn btn-ghost" href="#cursos">Conheça os cursos</a>
-        </div>
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <p class="eyebrow">Consultoria e mentoria em IA · Pontal do Paraná, PR</p>
+      <h1>Inteligência artificial <em>trabalhando</em> pela sua empresa</h1>
+      <p class="lema">Gerando Riqueza com Tecnologia</p>
+      <p class="lead">Criamos e implantamos <strong>agentes de IA</strong> para as rotinas que tomam o tempo da sua equipe: <strong>atendimento, vendas, financeiro e estoque</strong>. Do diagnóstico à manutenção mensal.</p>
+      <div class="cta">
+        <a class="btn btn-gold" href="contato.html?assunto=consultoria">Quero um diagnóstico</a>
+        <a class="btn btn-ghost" href="consultoria.html">Como funciona</a>
       </div>
-      <img class="hero-logo" src="logo.png" alt="Logomarca Becher Trader: as letras B e T com gráfico de candles em alta e o lema Gerando Riqueza com Tecnologia" width="900" height="595">
+    </div>
+    <aside class="hero-card" aria-label="O que um agente de IA faz">
+      <h2>O que um agente faz pela sua empresa</h2>
+      <ul>
+        <li><b>1</b><span>Responde os clientes a qualquer hora e chama uma pessoa quando precisa</span></li>
+        <li><b>2</b><span>Prepara orçamentos e acompanha cada proposta</span></li>
+        <li><b>3</b><span>Confere contas a pagar e a receber</span></li>
+        <li><b>4</b><span>Avisa o que está acabando no estoque</span></li>
+      </ul>
+      <small>Experimente: o balão "Tire sua dúvida", no canto da tela, é um agente funcionando.</small>
+    </aside>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">O que fazemos</p>
+      <h2>Três frentes, um objetivo: tecnologia que dá resultado</h2>
+    </div>
+    <div class="cards3">
+      <a class="card destaque" href="consultoria.html">
+        <span class="tag">Principal</span>
+        <h3>Consultoria e Mentoria</h3>
+        <p>Agentes de IA sob medida para o seu segmento e acompanhamento próximo para a sua equipe usar a IA no dia a dia.</p>
+        <span class="mais">Conhecer a consultoria →</span>
+      </a>
+      <a class="card" href="cursos.html">
+        <span class="tag">Cursos</span>
+        <h3>Cursos de IA e Programação</h3>
+        <p>Do primeiro contato com a IA, pelo celular, até criar assistentes para a empresa e programar com ajuda da IA.</p>
+        <span class="mais">Ver os cursos →</span>
+      </a>
+      <a class="card" href="plataformas.html">
+        <span class="tag">Traders</span>
+        <h3>Plataformas para Traders</h3>
+        <p>METHODUS, MENTHOR e CONTEXTO: tecnologia própria para a formação profissional de traders na B3.</p>
+        <span class="mais">Conhecer as plataformas →</span>
+      </a>
     </div>
   </div>
+</section>
 
-  <section id="sobre">
-    <div class="wrap about">
-      <div class="about-text">
-        <p class="eyebrow">Quem somos</p>
-        <h2 style="font-size:clamp(46px,6vw,72px)">Mais de 35 anos transformando tecnologia em resultado</h2>
-        <p>A Becher Trader é uma empresa de tecnologia fundada por <strong>Alfredo Becher Paes</strong>, empresário desde os 21 anos, com mais de três décadas em tecnologia da informação.</p>
-        <p>Foi programador e analista de sistemas, gerente de CPD e dono de duas empresas de informática, com atuação em software, redes, servidores e treinamento. Desde 2019 se dedica ao mercado financeiro como trader profissional e desenvolvedor de robôs e plataformas que trabalham junto com a inteligência artificial.</p>
-        <div class="roles"><span>Empresário</span><span>Trader</span><span>Programador</span></div>
-      </div>
-      <ol class="timeline" aria-label="Trajetória">
-        <li><time>1987</time><span>Programador e analista de sistemas</span></li>
-        <li><time>1990</time><span>Gerente de CPD</span></li>
-        <li><time>1992</time><span>Sócio da AL-DATA Informática, também escola de informática</span></li>
-        <li><time>1996</time><span>Fundador da ABP Informática: hardware, redes e servidores</span></li>
-        <li><time>2010</time><span>Consultor independente de TI e gestão</span></li>
-        <li><time>2019</time><span>Dedicação exclusiva ao mercado financeiro</span></li>
-        <li><time>2026</time><span>Becher Trader: cursos, IA para empresas e formação de traders</span></li>
-      </ol>
+<section>
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Como funciona a consultoria</p>
+      <h2>Do diagnóstico ao agente funcionando</h2>
     </div>
-  </section>
-
-  <section id="cursos">
-    <div class="wrap">
-      <div class="cursos-top">
-        <div class="head">
-          <p class="eyebrow">Cursos</p>
-          <h2>Aprenda a colocar a tecnologia para trabalhar por você</h2>
-          <p>Cursos práticos, em linguagem simples, de quem ensina informática desde os anos 90.</p>
-        </div>
-        <a class="destaque" href="#contato">
-          <strong>Prepare sua empresa para o fim da escala 6x1</strong>
-          <span>Descubra o que a IA pode fazer pela sua empresa.</span>
-          <em>Fale com a gente →</em>
-        </a>
-      </div>
-      <div class="tracks">
-        <div class="track">
-          <p class="track-label">Inteligência artificial</p>
-          <article class="course">
-            <h3>IA para Todos</h3>
-            <p>O primeiro passo. Você aprende a conversar com a IA e a usar no dia a dia, só com o celular.</p>
-            <ul>
-              <li>Escrever posts, mensagens e respostas a clientes</li>
-              <li>Organizar listas, tabelas e contas</li>
-              <li>Pesquisar, resumir e ter ideias para vender mais</li>
-            </ul>
-          </article>
-          <article class="course">
-            <h3>IA para o seu Negócio</h3>
-            <p>Para quem já usa a IA e quer que ela trabalhe pela empresa.</p>
-            <ul>
-              <li>Criar agentes para atendimento, vendas e financeiro</li>
-              <li>Automatizar as tarefas que se repetem todo dia</li>
-              <li>Montar relatórios e painéis simples</li>
-            </ul>
-          </article>
-        </div>
-        <div class="track">
-          <p class="track-label">Programação</p>
-          <article class="course">
-            <h3>Programação com IA</h3>
-            <p>Para quem nunca programou e quer criar as próprias ferramentas com a ajuda da IA.</p>
-            <ul>
-              <li>Lógica de programação explicada do zero</li>
-              <li>Criar pequenos sistemas e automações</li>
-              <li>Usar a IA para escrever, revisar e corrigir código</li>
-            </ul>
-          </article>
-          <article class="course">
-            <h3>MQL5 para Traders</h3>
-            <p>Para traders que querem transformar a própria estratégia em robô no MetaTrader 5.</p>
-            <ul>
-              <li>A linguagem MQL5, do básico ao robô completo</li>
-              <li>Indicadores e robôs com gerenciamento de risco</li>
-              <li>Testar a estratégia no histórico antes de operar</li>
-            </ul>
-          </article>
-        </div>
-      </div>
+    <div class="steps">
+      <article class="step"><p class="n">ETAPA 1</p><h3>Diagnóstico</h3><p>Entendemos as rotinas da empresa e mostramos onde a IA economiza tempo.</p></article>
+      <article class="step"><p class="n">ETAPA 2</p><h3>Implantação</h3><p>Criamos os agentes certos e colocamos para funcionar nos canais que você já usa.</p></article>
+      <article class="step"><p class="n">ETAPA 3</p><h3>Manutenção mensal</h3><p>Acompanhamos, ajustamos e mantemos os agentes atualizados.</p></article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="ia">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Consultoria em IA para empresas</p>
-        <h2>Agentes de IA sob medida para a sua empresa</h2>
-        <p>Criamos e implantamos agentes que trabalham sozinhos nas rotinas da sua empresa, e cuidamos deles todo mês.</p>
-      </div>
-      <div class="steps">
-        <article class="step">
-          <p class="n">ETAPA 1</p>
-          <h3>Análise da demanda</h3>
-          <p>Conversamos com você, entendemos as rotinas da empresa e mostramos onde a IA economiza tempo.</p>
-        </article>
-        <article class="step">
-          <p class="n">ETAPA 2</p>
-          <h3>Implantação</h3>
-          <p>Criamos os agentes certos para o seu segmento e colocamos tudo para funcionar nos canais que você já usa.</p>
-        </article>
-        <article class="step">
-          <p class="n">ETAPA 3</p>
-          <h3>Manutenção mensal</h3>
-          <p>Acompanhamos o funcionamento, fazemos os ajustes e mantemos os agentes atualizados.</p>
-        </article>
-      </div>
-
-      <div class="agents">
-        <h3>Exemplos de agentes que podemos implantar</h3>
-        <ul class="agent-list">
-          <li><b>Vendas</b><span>Acompanha orçamentos, lembra o cliente e prepara propostas.</span></li>
-          <li><b>Financeiro e conciliação bancária</b><span>Confere o extrato com contas a pagar e a receber e aponta diferenças.</span></li>
-          <li><b>Estoque, fornecedores e pedidos</b><span>Avisa o que está acabando e prepara os pedidos de compra.</span></li>
-          <li><b>Marketing</b><span>Prepara posts e textos semanais no tom da sua marca.</span></li>
-          <li><b>Atendimento no WhatsApp</b><span>Responde clientes 24 horas e chama um humano quando precisa.</span></li>
-          <li><b>Triagem de currículos</b><span>Cruza candidatos com as vagas e entrega um resumo pronto.</span></li>
-        </ul>
-      </div>
-      <p class="note"><strong>Como funciona:</strong> orçamento de implantação e de manutenção mensal, feito sob medida depois da análise da sua demanda.</p>
+<section class="faixa">
+  <div class="wrap">
+    <div>
+      <h2>Prepare a sua empresa para o fim da escala 6x1</h2>
+      <p>Menos horas de equipe pedem mais tarefas automáticas. Comece por um diagnóstico das suas rotinas.</p>
     </div>
-  </section>
-
-  <section id="traders">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Formação profissional de traders</p>
-        <h2>Tecnologia para quem opera na B3</h2>
-        <p>Plataformas próprias para formar e acompanhar traders, construídas a partir da experiência real de quem opera.</p>
-      </div>
-      <div class="products">
-        <article class="prod">
-          <h3>METHODUS</h3>
-          <p>Plataforma de formação profissional de traders, com trilha de fundamentos, prática em simulador e professor de IA que avalia cada etapa.</p>
-        </article>
-        <article class="prod">
-          <h3>MENTHOR</h3>
-          <p>Diário do trader com avaliação por IA. Analisa as operações do dia, o plano de trading e o comportamento, para formar disciplina.</p>
-        </article>
-        <article class="prod">
-          <h3>CONTEXTO</h3>
-          <p>Robôs algorítmicos para MetaTrader 5 que leem o contexto do mercado e executam estratégias com gerenciamento de risco.</p>
-        </article>
-      </div>
-      <p class="market">WIN · mini-índice &nbsp;|&nbsp; WDO · mini-dólar &nbsp;|&nbsp; B3</p>
-    </div>
-  </section>
-
-  <section id="contato">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Contato</p>
-        <h2>Conte o que a sua empresa precisa</h2>
-        <p>Preencha os campos e a mensagem chega pronta no WhatsApp do Becher. É só tocar em enviar.</p>
-      </div>
-      <div class="contact">
-        <form id="f-contato" novalidate>
-          <div class="row2">
-            <div class="field">
-              <label for="c-nome">Seu nome</label>
-              <input id="c-nome" name="nome" autocomplete="name" placeholder="Ex.: Maria Souza" required>
-            </div>
-            <div class="field">
-              <label for="c-empresa">Empresa</label>
-              <input id="c-empresa" name="empresa" autocomplete="organization" placeholder="Ex.: Loja da Praia">
-            </div>
-          </div>
-          <div class="row2">
-            <div class="field">
-              <label for="c-segmento">Segmento</label>
-              <input id="c-segmento" name="segmento" placeholder="Ex.: comércio, saúde, serviços">
-            </div>
-            <div class="field">
-              <label for="c-interesse">Interesse</label>
-              <select id="c-interesse" name="interesse">
-                <option>Curso IA para Todos</option>
-                <option>Curso IA para o seu Negócio</option>
-                <option>Curso Programação com IA</option>
-                <option>Curso MQL5 para Traders</option>
-                <option>Agentes de IA para minha empresa</option>
-                <option>Preparar a empresa para a nova jornada</option>
-                <option>Plataformas para traders</option>
-                <option>Outro assunto</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label for="c-msg">Como podemos ajudar?</label>
-            <textarea id="c-msg" name="mensagem" placeholder="Ex.: Quero automatizar o atendimento da loja no WhatsApp."></textarea>
-          </div>
-          <p class="err" id="c-err" hidden>Escreva seu nome para continuar.</p>
-          <a class="btn btn-zap" id="c-enviar" href="https://wa.me/5541988927722" target="_blank" rel="noopener">
-            <svg aria-hidden="true"><use href="#i-chat"/></svg>Enviar pelo WhatsApp
-          </a>
-          <p class="form-foot">O WhatsApp abre com a mensagem preenchida. Nada é enviado sem você confirmar.</p>
-        </form>
-
-        <div class="channels">
-          <div class="ch">
-            <svg aria-hidden="true"><use href="#i-chat"/></svg>
-            <span class="k">WhatsApp e telefone</span>
-            <span class="v" id="v-fone">(41) 98892-7722</span>
-            <div class="actions">
-              <a class="mini" href="https://wa.me/5541988927722" target="_blank" rel="noopener">Abrir conversa</a>
-              <button class="mini" type="button" data-copy="(41) 98892-7722">Copiar</button>
-            </div>
-          </div>
-          <div class="ch">
-            <svg aria-hidden="true"><use href="#i-mail"/></svg>
-            <span class="k">E-mail</span>
-            <span class="v">bechertrader@gmail.com</span>
-            <div class="actions">
-              <button class="mini" type="button" data-copy="bechertrader@gmail.com">Copiar</button>
-            </div>
-          </div>
-          <div class="ch">
-            <svg aria-hidden="true"><use href="#i-camera"/></svg>
-            <span class="k">Instagram</span>
-            <a class="v" href="https://www.instagram.com/bechertrader/" target="_blank" rel="noopener">@bechertrader</a>
-          </div>
-          <div class="ch">
-            <svg aria-hidden="true"><use href="#i-play"/></svg>
-            <span class="k">YouTube</span>
-            <a class="v" href="https://www.youtube.com/@bechertrader3249" target="_blank" rel="noopener">@bechertrader3249</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <a class="btn btn-gold" href="contato.html?assunto=consultoria">Quero um diagnóstico</a>
+  </div>
+</section>
 </main>
 
 <footer>
   <div class="wrap">
-    <img src="emblema.png" alt="" width="72" height="68">
+    <img src="emblema.png" alt="" width="64" height="60">
     <p><b>Becher Trader</b>Gerando Riqueza com Tecnologia · Pontal do Paraná, PR · © 2026</p>
+    <nav aria-label="Rodapé"><a href="index.html">Início</a> <a href="consultoria.html">Consultoria</a> <a href="cursos.html">Cursos</a> <a href="plataformas.html">Traders</a> <a href="sobre.html">Sobre</a> <a href="contato.html">Contato</a></nav>
   </div>
 </footer>
 
 <a class="btn btn-zap float-zap" href="https://wa.me/5541988927722?text=Ol%C3%A1%2C%20Becher!%20Vim%20pelo%20site%20da%20Becher%20Trader." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
   <svg aria-hidden="true"><use href="#i-chat"/></svg><span>WhatsApp</span>
 </a>
-
-<script>
-(function(){
-  var FONE = "5541988927722";
-  var $ = function(id){ return document.getElementById(id); };
-  var link = $("c-enviar"), err = $("c-err");
-  var campos = ["c-nome","c-empresa","c-segmento","c-interesse","c-msg"];
-
-  function montar(){
-    var nome = $("c-nome").value.trim();
-    var linhas = ["Olá, Becher! Vim pelo site da Becher Trader."];
-    if (nome) linhas.push("Nome: " + nome);
-    var emp = $("c-empresa").value.trim(); if (emp) linhas.push("Empresa: " + emp);
-    var seg = $("c-segmento").value.trim(); if (seg) linhas.push("Segmento: " + seg);
-    linhas.push("Interesse: " + $("c-interesse").value);
-    var msg = $("c-msg").value.trim(); if (msg) linhas.push("Mensagem: " + msg);
-    link.href = "https://wa.me/" + FONE + "?text=" + encodeURIComponent(linhas.join("\n"));
-    return nome;
-  }
-  campos.forEach(function(id){
-    $(id).addEventListener("input", function(){ montar(); if ($("c-nome").value.trim()) err.hidden = true; });
-    $(id).addEventListener("change", montar);
-  });
-  link.addEventListener("click", function(e){
-    if (!montar()){ e.preventDefault(); err.hidden = false; $("c-nome").focus(); }
-  });
-  $("f-contato").addEventListener("submit", function(e){ e.preventDefault(); });
-  montar();
-
-  document.querySelectorAll("[data-copy]").forEach(function(b){
-    b.addEventListener("click", function(){
-      var txt = b.getAttribute("data-copy"), orig = b.textContent;
-      function ok(){ b.textContent = "Copiado"; setTimeout(function(){ b.textContent = orig; }, 1800); }
-      function selecionar(){
-        var v = b.closest(".ch").querySelector(".v");
-        var r = document.createRange(); r.selectNodeContents(v);
-        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-        b.textContent = "Selecionado";
-        setTimeout(function(){ b.textContent = orig; }, 1800);
-      }
-      try {
-        navigator.clipboard.writeText(txt).then(ok, selecionar);
-      } catch(_) { selecionar(); }
-    });
-  });
-})();
-</script>
-
 <button class="chat-fab" id="chat-abrir" type="button" aria-controls="chat-box" aria-expanded="false">
-  <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.2 9.3a2.9 2.9 0 0 1 5.6 1c0 1.9-2.8 2.4-2.8 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.3" fill="currentColor"/></svg><span>Tire sua dúvida</span>
+  <svg aria-hidden="true"><use href="#i-ajuda"/></svg><span>Tire sua dúvida</span>
 </button>
 <div class="chat-box" id="chat-box" role="dialog" aria-label="Atendimento virtual da Becher Trader" hidden>
   <div class="chat-head">
@@ -566,57 +146,6 @@ footer b{font-family:var(--f-display);font-weight:400;font-size:30px;color:var(-
   </form>
   <p class="chat-note">Respostas automáticas. Para falar com uma pessoa, use o WhatsApp.</p>
 </div>
-
-<script>
-(function(){
-  /* Endereço do App da Web publicado no Google Apps Script (projeto Agente Atendimento Cursos) */
-  var CHAT_URL = "https://script.google.com/macros/s/AKfycbxoXWTVZGo9GpZccJTdJAehRXo-HloP-RxPTLC6gYHEZ7OrNUl4h88CRkZeohIUGfFaHg/exec";
-  var ZAP = "https://wa.me/5541988927722?text=" + encodeURIComponent("Olá! Vim pelo atendimento do site da Becher Trader.");
-  var box = document.getElementById("chat-box"), abrir = document.getElementById("chat-abrir"),
-      log = document.getElementById("chat-log"), form = document.getElementById("chat-form"),
-      txt = document.getElementById("chat-txt"), btn = document.getElementById("chat-enviar");
-  var historico = [];
-  function add(de, texto, humano){
-    var d = document.createElement("div");
-    d.className = "msg " + de + (humano ? " humano" : "");
-    d.textContent = texto;
-    if (humano){ var a = document.createElement("a"); a.href = ZAP; a.target = "_blank"; a.rel = "noopener"; a.className = "zap"; a.textContent = "Abrir o WhatsApp"; d.appendChild(document.createElement("br")); d.appendChild(a); }
-    log.appendChild(d); log.scrollTop = log.scrollHeight;
-    return d;
-  }
-  function boasVindas(){
-    if (log.childElementCount) return;
-    add("bot", "Olá! Sou o assistente virtual da Becher Trader. Posso tirar dúvidas sobre o Curso de Inteligência Artificial: datas, valores, o que levar e a instalação dos aplicativos. Como posso ajudar?");
-  }
-  function alternar(mostrar){
-    box.hidden = !mostrar; abrir.hidden = mostrar; abrir.setAttribute("aria-expanded", String(mostrar));
-    if (mostrar){ boasVindas(); setTimeout(function(){ txt.focus(); }, 50); } else { abrir.focus(); }
-  }
-  abrir.addEventListener("click", function(){ alternar(true); });
-  document.getElementById("chat-fechar").addEventListener("click", function(){ alternar(false); });
-  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !box.hidden) alternar(false); });
-  txt.addEventListener("keydown", function(e){ if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); form.requestSubmit(); } });
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-    var pergunta = txt.value.trim();
-    if (!pergunta || btn.disabled) return;
-    add("eu", pergunta); txt.value = ""; btn.disabled = true;
-    var espera = add("bot", "Digitando...");
-    if (!CHAT_URL || CHAT_URL.indexOf("__") === 0){
-      espera.remove(); add("bot", "O atendimento automático está em configuração. Fale com a gente pelo WhatsApp.", true); btn.disabled = false; return;
-    }
-    fetch(CHAT_URL, { method: "POST", body: JSON.stringify({ pergunta: pergunta, historico: historico.slice(-6) }) })
-      .then(function(r){ return r.json(); })
-      .then(function(d){
-        espera.remove();
-        add("bot", d.resposta || "Não consegui responder agora.", !!d.humano || !d.ok);
-        historico.push({ de: "eu", texto: pergunta }, { de: "bot", texto: d.resposta || "" });
-      })
-      .catch(function(){ espera.remove(); add("bot", "Não consegui responder agora. Tente de novo em instantes ou fale com a gente pelo WhatsApp.", true); })
-      .then(function(){ btn.disabled = false; txt.focus(); });
-  });
-})();
-</script>
-
+<script src="site.js"></script>
 </body>
 </html>

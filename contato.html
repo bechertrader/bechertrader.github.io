@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contato | Becher Trader</title>
+<meta name="description" content="Fale com a Becher Trader: consultoria em IA, cursos e plataformas para traders.">
+<link rel="icon" href="emblema.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chat" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c-5.4 0-9.8 4-9.8 9 0 1.9.6 3.6 1.7 5.1L2.6 21.6l5.5-1.6c1.2.5 2.5.8 3.9.8 5.4 0 9.8-4 9.8-9s-4.4-9.6-9.8-9.6zm0 16.6c-1.2 0-2.4-.3-3.4-.8l-.4-.2-3.1.9.8-3-.3-.4a6.9 6.9 0 0 1-1.4-4.1c0-3.9 3.5-7 7.8-7s7.8 3.1 7.8 7-3.5 7.6-7.8 7.6zm4.1-5.3c-.2-.1-1.3-.7-1.6-.7-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-.9-1-1.2-1.6-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1.1.9.4 1.8 1 2.6 1.1 1.6 2.5 2.8 4.3 3.5.5.2 1 .3 1.5.4.5.1 1.1 0 1.6-.3.4-.2.7-.6.8-1 .1-.2.1-.5 0-.7-.1-.3-.3-.4-.6-.5z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 5h18v14H3z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M3 6l9 7 9-7"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path fill="currentColor" d="M10 9l5 3-5 3z"/></symbol>
+  <symbol id="i-ajuda" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.2 9.3a2.9 2.9 0 0 1 5.6 1c0 1.9-2.8 2.4-2.8 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.3" fill="currentColor"/></symbol>
+</svg>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Becher Trader, página inicial">
+      <img src="emblema.png" alt="" width="52" height="49">
+      <b>BECHER <span>TRADER</span></b>
+    </a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-controls="menu" aria-expanded="false">Menu</button>
+    <nav class="menu" id="menu" aria-label="Páginas do site">
+      <a href="index.html">Início</a>
+      <a href="consultoria.html">Consultoria</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="plataformas.html">Traders</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html" aria-current="page">Contato</a>
+      <a class="menu-cta" href="contato.html?assunto=consultoria">Quero um diagnóstico</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Contato</p>
+    <h1>Conte o que a sua empresa precisa</h1>
+    <p>Preencha o formulário e retornamos pelo telefone ou e-mail que você informar. Se preferir, chame direto no WhatsApp.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap contact">
+    <form class="form" id="f-contato" novalidate>
+      <div class="field">
+        <label for="c-nome">Seu nome</label>
+        <input id="c-nome" name="nome" autocomplete="name" placeholder="Ex.: Maria Souza" required>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="c-tel">Telefone / WhatsApp</label>
+          <input id="c-tel" name="telefone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(41) 99999-9999">
+        </div>
+        <div class="field">
+          <label for="c-email">E-mail</label>
+          <input id="c-email" name="email" type="email" autocomplete="email" placeholder="seu@email.com">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="c-empresa">Empresa <small>(opcional)</small></label>
+          <input id="c-empresa" name="empresa" autocomplete="organization" placeholder="Ex.: Loja da Praia">
+        </div>
+        <div class="field">
+          <label for="c-segmento">Segmento <small>(opcional)</small></label>
+          <input id="c-segmento" name="segmento" placeholder="Ex.: comércio, saúde, serviços">
+        </div>
+      </div>
+      <div class="field">
+        <label for="c-interesse">Interesse</label>
+        <select id="c-interesse" name="interesse">
+          <option data-k="consultoria">Consultoria: agentes de IA para minha empresa</option>
+          <option data-k="mentoria">Mentoria em IA</option>
+          <option data-k="cursos">Cursos de IA</option>
+          <option data-k="programacao">Cursos de programação (Programação com IA ou MQL5)</option>
+          <option data-k="traders">Plataformas para traders</option>
+          <option data-k="outro">Outro assunto</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="c-msg">Como podemos ajudar?</label>
+        <textarea id="c-msg" name="mensagem" placeholder="Ex.: Quero automatizar o atendimento da loja no WhatsApp."></textarea>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="c-site">Não preencha</label><input id="c-site" name="site" tabindex="-1" autocomplete="off"></div>
+      <p class="msg-form" id="c-retorno" role="status" hidden></p>
+      <div class="form-acoes">
+        <button class="btn btn-gold" id="c-enviar" type="submit">Enviar contato</button>
+        <a class="btn btn-zap" id="c-zap" href="https://wa.me/5541988927722" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-chat"/></svg>Prefiro WhatsApp</a>
+      </div>
+      <p class="form-foot">Informe pelo menos um telefone ou e-mail. Usamos seus dados apenas para responder ao seu contato.</p>
+    </form>
+
+    <div class="channels">
+      <div class="ch">
+        <svg aria-hidden="true"><use href="#i-chat"/></svg>
+        <span class="k">WhatsApp e telefone</span>
+        <span class="v">(41) 98892-7722</span>
+        <div class="actions">
+          <a class="mini" href="https://wa.me/5541988927722" target="_blank" rel="noopener">Abrir conversa</a>
+          <button class="mini" type="button" data-copy="(41) 98892-7722">Copiar</button>
+        </div>
+      </div>
+      <div class="ch">
+        <svg aria-hidden="true"><use href="#i-mail"/></svg>
+        <span class="k">E-mail</span>
+        <span class="v">bechertrader@gmail.com</span>
+        <div class="actions"><button class="mini" type="button" data-copy="bechertrader@gmail.com">Copiar</button></div>
+      </div>
+      <div class="ch">
+        <svg aria-hidden="true"><use href="#i-mail"/></svg>
+        <span class="k">Cursos e alunos</span>
+        <span class="v">bechertrader.cursos@gmail.com</span>
+        <div class="actions"><button class="mini" type="button" data-copy="bechertrader.cursos@gmail.com">Copiar</button></div>
+      </div>
+      <div class="ch">
+        <svg aria-hidden="true"><use href="#i-camera"/></svg>
+        <span class="k">Instagram</span>
+        <a class="v" href="https://www.instagram.com/bechertrader/" target="_blank" rel="noopener">@bechertrader</a>
+      </div>
+      <div class="ch">
+        <svg aria-hidden="true"><use href="#i-play"/></svg>
+        <span class="k">YouTube</span>
+        <a class="v" href="https://www.youtube.com/@bechertrader3249" target="_blank" rel="noopener">@bechertrader3249</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="emblema.png" alt="" width="64" height="60">
+    <p><b>Becher Trader</b>Gerando Riqueza com Tecnologia · Pontal do Paraná, PR · © 2026</p>
+    <nav aria-label="Rodapé"><a href="index.html">Início</a> <a href="consultoria.html">Consultoria</a> <a href="cursos.html">Cursos</a> <a href="plataformas.html">Traders</a> <a href="sobre.html">Sobre</a> <a href="contato.html">Contato</a></nav>
+  </div>
+</footer>
+
+<a class="btn btn-zap float-zap" href="https://wa.me/5541988927722?text=Ol%C3%A1%2C%20Becher!%20Vim%20pelo%20site%20da%20Becher%20Trader." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+  <svg aria-hidden="true"><use href="#i-chat"/></svg><span>WhatsApp</span>
+</a>
+<button class="chat-fab" id="chat-abrir" type="button" aria-controls="chat-box" aria-expanded="false">
+  <svg aria-hidden="true"><use href="#i-ajuda"/></svg><span>Tire sua dúvida</span>
+</button>
+<div class="chat-box" id="chat-box" role="dialog" aria-label="Atendimento virtual da Becher Trader" hidden>
+  <div class="chat-head">
+    <img src="emblema.png" alt="" width="40" height="38">
+    <div><b>Atendimento Becher Trader</b><small>Assistente virtual com inteligência artificial</small></div>
+    <button class="chat-close" id="chat-fechar" type="button" aria-label="Fechar atendimento">×</button>
+  </div>
+  <div class="chat-log" id="chat-log" aria-live="polite"></div>
+  <form class="chat-form" id="chat-form">
+    <label for="chat-txt" class="vh">Sua dúvida</label>
+    <textarea id="chat-txt" rows="1" maxlength="800" placeholder="Digite sua dúvida..."></textarea>
+    <button type="submit" id="chat-enviar">Enviar</button>
+  </form>
+  <p class="chat-note">Respostas automáticas. Para falar com uma pessoa, use o WhatsApp.</p>
+</div>
+<script src="site.js"></script>
+</body>
+</html>
