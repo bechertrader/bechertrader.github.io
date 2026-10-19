@@ -27,6 +27,8 @@ p{margin:0}
 .brand img{width:52px;height:auto}
 .brand b{font-family:var(--f-display);font-weight:400;font-size:32px;letter-spacing:.04em;line-height:1;white-space:nowrap}
 .brand b span{color:var(--acc)}
+.brand-txt{display:grid;gap:5px}
+.brand small{font-family:var(--f-body);font-weight:700;font-size:17px;letter-spacing:.03em;color:var(--gold);white-space:nowrap;line-height:1}
 .menu{display:flex;gap:6px;align-items:center}
 .menu a{white-space:nowrap;color:var(--sub);text-decoration:none;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.05em;padding:8px 10px;border-radius:6px}
 .menu a:hover{color:var(--fg);background:rgba(96,184,255,.08)}
@@ -74,6 +76,7 @@ section{padding-block:72px;border-bottom:1px solid var(--line)}
 .head p{font-size:22px;color:var(--sub)}
 
 .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cards4{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:30px 26px;display:grid;gap:14px;align-content:start;min-width:0;text-decoration:none;color:var(--fg);transition:transform .15s,border-color .15s}
 a.card:hover{transform:translateY(-2px);border-color:var(--acc)}
 .card.destaque{border:2px solid var(--gold)}
@@ -102,7 +105,8 @@ a.card:hover{transform:translateY(-2px);border-color:var(--acc)}
 .faixa p{font-size:22px;color:var(--sub);margin-top:10px}
 
 .duas{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.texto{display:grid;gap:18px;max-width:62ch}
+.texto{display:grid;gap:18px;max-width:62ch;min-width:0}
+.duas>*{min-width:0}
 .texto p{font-size:22px;color:var(--sub)}
 .texto p strong{color:var(--fg)}
 .checks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
@@ -216,7 +220,7 @@ footer nav a:hover{color:var(--fg)}
 }
 @media (max-width:980px){
   .hero .wrap,.duas,.contact,.faixa .wrap{grid-template-columns:1fr}
-  .cards3,.steps,.tracks{grid-template-columns:1fr}
+  .cards3,.cards4,.steps,.tracks{grid-template-columns:1fr}
   .lista2{grid-template-columns:1fr}
 }
 @media (max-width:640px){
@@ -235,4 +239,11 @@ footer nav a:hover{color:var(--fg)}
   footer nav{margin-left:0}
 }
 
-@media (max-width:430px){.brand b{font-size:23px}.brand img{width:38px}.menu-btn{padding:0 10px;font-size:17px}}
+@media (max-width:380px){.brand small{font-size:12px}.brand{gap:8px}}
+@media (max-width:430px){.brand small{font-size:13px;letter-spacing:0}.brand b{font-size:23px}.brand img{width:38px}.menu-btn{padding:0 10px;font-size:17px}}
+
+/* Diagnóstico */
+section[id]{scroll-margin-top:90px}
+.step a,.aviso-diag a{color:var(--gold);text-decoration:underline}
+.page-head p.aviso-diag{font-size:22px;color:var(--fg);border-left:4px solid var(--gold);padding:12px 0 12px 18px;max-width:64ch}
+.page-head p.aviso-diag strong{color:var(--gold)}
