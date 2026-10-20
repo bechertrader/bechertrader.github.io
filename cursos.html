@@ -94,7 +94,67 @@
     </div>
     <p class="note"><strong>Turmas fechadas para empresas:</strong> levamos qualquer um destes cursos para a sua equipe, com exemplos da rotina da sua empresa. <a href="contato.html?assunto=empresa">Pedir uma turma fechada</a>.</p>
     <p class="note"><strong>Dúvidas sobre datas, valores e o que levar?</strong> Pergunte no balão "Tire sua dúvida", no canto da tela, ou escreva para bechertrader.cursos@gmail.com.</p>
-    <div class="cta" style="margin-top:28px"><a class="btn btn-gold" href="contato.html?assunto=cursos">Quero saber da próxima turma</a></div>
+    <div class="cta" style="margin-top:28px"><a class="btn btn-gold" href="#lista">Entrar na lista de interessados</a></div>
+  </div>
+</section>
+
+<section id="lista">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Lista de interessados</p>
+      <h2>Garanta seu lugar na próxima turma</h2>
+      <p>Deixe seu nome na lista. Quando a turma do curso que você escolheu fechar, avisamos você pelo WhatsApp ou por e-mail com datas e valores. Não tem compromisso.</p>
+    </div>
+    <form class="form form-lista" id="f-interesse" novalidate>
+      <div class="field">
+        <label for="i-nome">Seu nome</label>
+        <input id="i-nome" name="nome" autocomplete="name" placeholder="Ex.: Maria Souza" required>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="i-tel">WhatsApp</label>
+          <input id="i-tel" name="telefone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(41) 99999-9999">
+        </div>
+        <div class="field">
+          <label for="i-email">E-mail</label>
+          <input id="i-email" name="email" type="email" autocomplete="email" placeholder="seu@email.com">
+        </div>
+      </div>
+      <fieldset class="opcoes">
+        <legend>Curso de interesse <small>(pode marcar mais de um)</small></legend>
+        <label><input type="checkbox" name="curso" value="IA para Todos"> IA para Todos</label>
+        <label><input type="checkbox" name="curso" value="IA para o seu Negócio"> IA para o seu Negócio</label>
+        <label><input type="checkbox" name="curso" value="Programação com IA"> Programação com IA</label>
+        <label><input type="checkbox" name="curso" value="MQL5 para Traders"> MQL5 para Traders</label>
+      </fieldset>
+      <fieldset class="opcoes">
+        <legend>Melhor período <small>(pode marcar mais de um)</small></legend>
+        <label><input type="checkbox" name="periodo" value="Noite"> Noite</label>
+        <label><input type="checkbox" name="periodo" value="Tarde"> Tarde</label>
+        <label><input type="checkbox" name="periodo" value="Fim de semana"> Fim de semana</label>
+      </fieldset>
+      <div class="row2">
+        <div class="field">
+          <label for="i-empresa">Empresa <small>(opcional)</small></label>
+          <input id="i-empresa" name="empresa" autocomplete="organization" placeholder="Ex.: Loja da Praia">
+        </div>
+        <div class="field">
+          <label for="i-segmento">Segmento <small>(opcional)</small></label>
+          <input id="i-segmento" name="segmento" placeholder="Ex.: comércio, indústria, serviços">
+        </div>
+      </div>
+      <fieldset class="opcoes">
+        <legend>É associado da ACIAPAR?</legend>
+        <label><input type="radio" name="aciapar" value="Sim"> Sim</label>
+        <label><input type="radio" name="aciapar" value="Não"> Não</label>
+      </fieldset>
+      <div class="hp" aria-hidden="true"><label for="i-site">Não preencha</label><input id="i-site" name="site" tabindex="-1" autocomplete="off"></div>
+      <p class="msg-form" id="i-retorno" role="status" hidden></p>
+      <div class="form-acoes">
+        <button class="btn btn-gold" id="i-enviar" type="submit">Entrar na lista</button>
+      </div>
+      <p class="form-foot">Informe pelo menos um WhatsApp ou e-mail. Usamos seus dados apenas para avisar sobre as turmas e novidades da Becher Trader.</p>
+    </form>
   </div>
 </section>
 

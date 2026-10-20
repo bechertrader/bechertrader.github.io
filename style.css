@@ -247,3 +247,11 @@ section[id]{scroll-margin-top:90px}
 .step a,.aviso-diag a{color:var(--gold);text-decoration:underline}
 .page-head p.aviso-diag{font-size:22px;color:var(--fg);border-left:4px solid var(--gold);padding:12px 0 12px 18px;max-width:64ch}
 .page-head p.aviso-diag strong{color:var(--gold)}
+
+/* Lista de interessados */
+.form-lista{max-width:880px}
+fieldset.opcoes{border:2px solid var(--line);border-radius:8px;padding:16px 18px 18px;margin:0;display:flex;flex-wrap:wrap;gap:12px 28px;min-width:0}
+fieldset.opcoes legend{padding:0 8px;font-weight:700;font-size:21px;color:var(--fg)}
+fieldset.opcoes legend small{font-weight:500;color:var(--sub)}
+fieldset.opcoes label{display:flex;align-items:center;gap:10px;font-size:21px;color:var(--fg);cursor:pointer;min-height:44px}
+fieldset.opcoes input{width:26px;height:26px;min-height:0;padding:0;margin:0;accent-color:var(--gold);flex:none;cursor:pointer}

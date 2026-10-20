@@ -79,6 +79,41 @@
     });
   }
 
+  /* ---------- Lista de interessados (página Cursos) ---------- */
+  var fi = $("f-interesse");
+  if (fi) {
+    var itel = $("i-tel"), iret = $("i-retorno"), ienv = $("i-enviar");
+    itel.addEventListener("input", function () {
+      var d = itel.value.replace(/\D/g, "").slice(0, 11), s = d;
+      if (d.length > 2) s = "(" + d.slice(0, 2) + ") " + d.slice(2);
+      if (d.length > 7) s = "(" + d.slice(0, 2) + ") " + d.slice(2, d.length - 4) + "-" + d.slice(d.length - 4);
+      itel.value = s;
+    });
+    var marcados = function (n) { return Array.prototype.map.call(fi.querySelectorAll('input[name="' + n + '"]:checked'), function (x) { return x.value; }); };
+    var avisar = function (tipo, texto) { iret.hidden = false; iret.className = "msg-form " + tipo; iret.textContent = texto; };
+    fi.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var d = {
+        tipo: "interesse", nome: $("i-nome").value.trim(), telefone: itel.value.trim(), email: $("i-email").value.trim(),
+        cursos: marcados("curso"), periodos: marcados("periodo"), empresa: $("i-empresa").value.trim(),
+        segmento: $("i-segmento").value.trim(), aciapar: (marcados("aciapar")[0] || ""), site: $("i-site").value
+      };
+      if (!d.nome) { avisar("erro", "Escreva o seu nome."); $("i-nome").focus(); return; }
+      if (!d.telefone && !d.email) { avisar("erro", "Informe um WhatsApp ou um e-mail para avisarmos você."); itel.focus(); return; }
+      if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) { avisar("erro", "Confira o e-mail informado."); $("i-email").focus(); return; }
+      if (!d.cursos.length) { avisar("erro", "Marque pelo menos um curso de interesse."); return; }
+      ienv.disabled = true; ienv.textContent = "Enviando...";
+      fetch(API_URL, { method: "POST", body: JSON.stringify(d) })
+        .then(function (r) { return r.json(); })
+        .then(function (r) {
+          if (r.ok) { avisar("ok", r.resposta || "Pronto! Você está na lista. Avisaremos quando a turma fechar."); fi.reset(); }
+          else avisar("erro", r.resposta || "Não foi possível enviar agora. Fale com a gente pelo WhatsApp (41) 98892-7722.");
+        })
+        .catch(function () { avisar("erro", "Não foi possível enviar agora. Tente de novo ou fale com a gente pelo WhatsApp."); })
+        .then(function () { ienv.disabled = false; ienv.textContent = "Entrar na lista"; });
+    });
+  }
+
   /* ---------- Balão de atendimento com IA ---------- */
   var box = $("chat-box"), abrir = $("chat-abrir");
   if (!box || !abrir) return;
