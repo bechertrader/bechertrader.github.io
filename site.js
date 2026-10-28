@@ -114,6 +114,43 @@
     });
   }
 
+
+  /* ---------- Lista de interessados do MENTHOR (página MENTHOR) ---------- */
+  var fm = $("f-menthor");
+  if (fm) {
+    var mtel = $("m-tel"), mret = $("m-retorno"), menv = $("m-enviar");
+    mtel.addEventListener("input", function () {
+      var d = mtel.value.replace(/\D/g, "").slice(0, 11), s = d;
+      if (d.length > 2) s = "(" + d.slice(0, 2) + ") " + d.slice(2);
+      if (d.length > 7) s = "(" + d.slice(0, 2) + ") " + d.slice(2, d.length - 4) + "-" + d.slice(d.length - 4);
+      mtel.value = s;
+    });
+    var qs = new URLSearchParams(location.search);
+    var origemLink = qs.get("utm_source") || qs.get("origem") || qs.get("ref") || (document.referrer ? new URL(document.referrer).hostname : "direto");
+    var mMarc = function (n) { return Array.prototype.map.call(fm.querySelectorAll('input[name="' + n + '"]:checked'), function (x) { return x.value; }); };
+    var mAvisar = function (tipo, texto) { mret.hidden = false; mret.className = "msg-form " + tipo; mret.textContent = texto; };
+    fm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var d = {
+        tipo: "menthor", nome: $("m-nome").value.trim(), email: $("m-email").value.trim(), telefone: mtel.value.trim(),
+        experiencia: (mMarc("experiencia")[0] || ""), plataformas: mMarc("plataforma"), como_conheceu: $("m-origem").value,
+        aceite: $("m-aceite").checked ? "Sim" : "", origem: origemLink, site: $("m-site").value
+      };
+      if (!d.nome) { mAvisar("erro", "Escreva o seu nome."); $("m-nome").focus(); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) { mAvisar("erro", "Informe um e-mail válido para avisarmos você."); $("m-email").focus(); return; }
+      if (!d.aceite) { mAvisar("erro", "Marque a autorização para entrar na lista."); $("m-aceite").focus(); return; }
+      menv.disabled = true; menv.textContent = "Enviando...";
+      fetch(API_URL, { method: "POST", body: JSON.stringify(d) })
+        .then(function (r) { return r.json(); })
+        .then(function (r) {
+          if (r.ok) { mAvisar("ok", r.resposta || "Pronto! Você está na lista do MENTHOR. Avisaremos você no lançamento."); fm.reset(); }
+          else mAvisar("erro", r.resposta || "Não foi possível enviar agora. Tente de novo em instantes.");
+        })
+        .catch(function () { mAvisar("erro", "Não foi possível enviar agora. Tente de novo em instantes ou escreva para bechertrader@gmail.com."); })
+        .then(function () { menv.disabled = false; menv.textContent = "Entrar na lista"; });
+    });
+  }
+
   /* ---------- Balão de atendimento com IA ---------- */
   var box = $("chat-box"), abrir = $("chat-abrir");
   if (!box || !abrir) return;
