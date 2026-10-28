@@ -209,8 +209,8 @@ footer nav a:hover{color:var(--fg)}
 .chat-form button:disabled{opacity:.6;cursor:wait}
 .chat-note{margin:0;padding:0 14px 12px;font-size:15px;color:var(--sub);background:var(--nav)}
 
-@media (max-width:1320px) and (min-width:1061px){.menu a.menu-cta{display:none}}
-@media (max-width:1060px){
+@media (max-width:1320px) and (min-width:1241px){.menu a.menu-cta{display:none}}
+@media (max-width:1240px){
   .menu-btn{display:inline-flex;align-items:center}
   .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--nav);border-bottom:1px solid var(--line);padding:8px 16px 16px}
   .menu.aberto{display:flex}
@@ -255,3 +255,49 @@ fieldset.opcoes legend{padding:0 8px;font-weight:700;font-size:21px;color:var(--
 fieldset.opcoes legend small{font-weight:500;color:var(--sub)}
 fieldset.opcoes label{display:flex;align-items:center;gap:10px;font-size:21px;color:var(--fg);cursor:pointer;min-height:44px}
 fieldset.opcoes input{width:26px;height:26px;min-height:0;padding:0;margin:0;accent-color:var(--gold);flex:none;cursor:pointer}
+
+/* SEO: temas e perguntas frequentes */
+.temas{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+.temas li{font-size:20px;font-weight:600;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 16px}
+.faq{display:grid;gap:12px;max-width:900px}
+.faq-item{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:0 22px}
+.faq-item summary{cursor:pointer;font-size:23px;font-weight:700;color:var(--fg);padding:18px 0;list-style-position:inside}
+.faq-item summary::marker{color:var(--gold)}
+.faq-item p{font-size:21px;color:var(--sub);padding:0 0 20px}
+footer .areas{flex-basis:100%;order:3;font-size:19px;color:var(--sub);max-width:80ch}
+
+
+/* Página de entrada (28/10/2026): dois caminhos, traders e empresas */
+.entrada{border-bottom:1px solid var(--line);background:linear-gradient(100deg,rgba(6,12,36,.97) 40%,rgba(6,12,36,.88)),url("fundo.jpg") center/cover no-repeat,var(--bg)}
+.entrada .wrap{padding-block:30px 56px;display:grid;gap:26px}
+.entrada-topo{display:grid;gap:10px;max-width:1100px}
+.entrada-topo h1{font-size:clamp(44px,4.6vw,68px)}
+.entrada-topo .cor-trader{color:var(--gold)}
+.entrada-topo .cor-empresa{color:var(--acc)}
+.entrada-topo .lead{font-size:24px;color:var(--sub);max-width:70ch}
+.lados{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.lado{background:rgba(9,22,64,.94);border:2px solid var(--line);border-radius:14px;padding:24px 26px 28px;display:grid;gap:16px;align-content:start;min-width:0}
+.lado-trader{border-top:6px solid var(--gold)}
+.lado-empresa{border-top:6px solid var(--acc)}
+.lado-rotulo{font-family:var(--f-mono);font-size:16px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sub)}
+.lado h2{font-size:clamp(40px,3.6vw,50px)}
+.lado-trader h2{color:var(--gold)}
+.lado-empresa h2{color:var(--acc)}
+.lado-lista{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.lado-lista li{display:grid;gap:4px;padding:16px 0;border-top:1px solid var(--line)}
+.lado-lista b{font-size:25px;font-weight:700;color:var(--fg)}
+.lado-lista b small{font-size:19px;color:var(--gold);font-weight:700}
+.lado-lista span{font-size:21px;color:var(--sub)}
+.lado-btn{justify-self:stretch;text-align:center}
+.lado-link{font-weight:700;font-size:21px;text-transform:uppercase;letter-spacing:.05em;text-decoration:none;justify-self:center}
+.lancamento{display:grid;gap:10px;text-decoration:none;color:var(--fg);background:linear-gradient(135deg,rgba(200,168,75,.22),rgba(200,168,75,.06));border:3px solid var(--gold);border-radius:12px;padding:22px 22px 24px;animation:lanc-brilho 2.4s ease-in-out infinite}
+.lancamento:hover{background:linear-gradient(135deg,rgba(200,168,75,.32),rgba(200,168,75,.1))}
+.lanc-selo{justify-self:start;font-family:var(--f-mono);font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:4px;background:var(--gold);color:#1a1405}
+.lanc-nome{font-family:var(--f-display);font-size:58px;line-height:1;letter-spacing:.04em;color:var(--gold)}
+.lanc-txt{font-size:22px;color:var(--fg)}
+.lanc-btn{justify-self:start}
+@keyframes lanc-brilho{0%,100%{box-shadow:0 0 0 0 rgba(200,168,75,.0)}50%{box-shadow:0 0 0 8px rgba(200,168,75,.28)}}
+@media (max-width:980px){.lados{grid-template-columns:1fr}}
+@media (max-width:640px){.entrada .wrap{padding-block:36px 44px;gap:28px}.lado{padding:24px 18px}.lanc-nome{font-size:48px}.lanc-btn{justify-self:stretch}}
+.menu a.menu-menthor{color:var(--gold)}
+.menu a.menu-menthor[aria-current="page"]{color:var(--gold)}
