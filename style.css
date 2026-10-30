@@ -301,3 +301,23 @@ footer .areas{flex-basis:100%;order:3;font-size:19px;color:var(--sub);max-width:
 @media (max-width:640px){.entrada .wrap{padding-block:36px 44px;gap:28px}.lado{padding:24px 18px}.lanc-nome{font-size:48px}.lanc-btn{justify-self:stretch}}
 .menu a.menu-menthor{color:var(--gold)}
 .menu a.menu-menthor[aria-current="page"]{color:var(--gold)}
+.lado-local{font-size:21px;color:var(--sub);margin:4px 0 0;line-height:1.5}
+
+/* Soluções prontas para empresas (30/10/2026) */
+.lancamento.lanc-empresa{border-color:var(--acc);background:linear-gradient(135deg,rgba(96,184,255,.20),rgba(96,184,255,.05));animation:lanc-brilho-azul 2.4s ease-in-out infinite}
+.lancamento.lanc-empresa:hover{background:linear-gradient(135deg,rgba(96,184,255,.30),rgba(96,184,255,.09))}
+.lanc-empresa .lanc-selo{background:var(--acc);color:var(--bg)}
+.lanc-empresa .lanc-nome{color:var(--acc)}
+@keyframes lanc-brilho-azul{0%,100%{box-shadow:0 0 0 0 rgba(96,184,255,0)}50%{box-shadow:0 0 0 8px rgba(96,184,255,.24)}}
+.ofertas{align-items:stretch}
+.oferta{display:flex;flex-direction:column;gap:14px}
+.oferta .cta{margin-top:auto;padding-top:6px}
+.oferta h3{font-size:clamp(34px,3vw,42px)}
+.oferta .tag{align-self:flex-start;font-family:var(--f-mono);font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:4px;border:1px solid var(--acc);color:var(--acc)}
+.oferta.destaque{border:2px solid var(--gold)}
+.oferta.destaque .tag{background:var(--gold);border-color:var(--gold);color:#1a1405}
+.oferta .para{font-size:20px;color:var(--sub)}
+.oferta .para b{color:var(--fg)}
+.oferta .cta .btn{width:100%}
+@media (max-width:1100px){.ofertas{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.ofertas{grid-template-columns:1fr}}
