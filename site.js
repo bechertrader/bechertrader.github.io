@@ -169,7 +169,7 @@
   function alternar(mostrar) {
     box.hidden = !mostrar; abrir.hidden = mostrar; abrir.setAttribute("aria-expanded", String(mostrar));
     if (mostrar) {
-      if (!log.childElementCount) add("bot", "Olá! Sou o assistente virtual da Becher Trader. Posso tirar dúvidas sobre o Curso de Inteligência Artificial: datas, valores, o que levar e a instalação dos aplicativos. Como posso ajudar?");
+      if (!log.childElementCount) add("bot", "Olá! Sou o assistente virtual da Becher Trader. Posso tirar dúvidas sobre os cursos de Inteligência Artificial e sobre as nossas soluções para empresas: atendente automático, sites, secretária virtual e diagnóstico. Como posso ajudar?");
       setTimeout(function () { txt.focus(); }, 50);
     } else abrir.focus();
   }

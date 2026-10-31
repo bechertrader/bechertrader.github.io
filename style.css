@@ -240,7 +240,7 @@ footer nav a:hover{color:var(--fg)}
 }
 
 @media (max-width:380px){.brand small{font-size:12px}.brand{gap:8px}}
-@media (max-width:430px){.brand small{font-size:13px;letter-spacing:0}.brand b{font-size:23px}.brand img{width:38px}.menu-btn{padding:0 10px;font-size:17px}}
+@media (max-width:460px){.brand small{font-size:13px;letter-spacing:0}.brand b{font-size:23px}.brand img{width:38px}.menu-btn{padding:0 10px;font-size:17px}}
 
 /* Diagnóstico */
 section[id]{scroll-margin-top:90px}
@@ -356,3 +356,4 @@ footer .areas{flex-basis:100%;order:3;font-size:19px;color:var(--sub);max-width:
 .demo-cta p{font-size:21px;color:var(--sub);margin-top:8px}
 @media (max-width:1100px){.demo-empresas{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:700px){.demo-empresas{grid-template-columns:1fr}.demo-emp{min-height:0}.demo-log{height:380px}.demo-msg{max-width:92%}.demo-form{flex-direction:column}.demo-cta{grid-template-columns:1fr}}
+#conversa,#escolha{scroll-margin-top:90px}
