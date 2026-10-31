@@ -203,7 +203,7 @@
    Sem nenhum ID preenchido, o aviso de cookies não aparece. */
 (function () {
   var META_PIXEL_ID = "";
-  var GOOGLE_TAG_ID = "";
+  var GOOGLE_TAG_ID = "G-7L3DZFTHVD";
   var CHAVE = "bt_cookies_v1";
   if (!META_PIXEL_ID && !GOOGLE_TAG_ID) return;
 
