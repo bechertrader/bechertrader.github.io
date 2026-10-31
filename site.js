@@ -194,3 +194,64 @@
       .then(function () { btn.disabled = false; txt.focus(); });
   });
 })();
+
+/* ---------- Cookies (LGPD) e remarketing ----------
+   Os rastreadores só carregam DEPOIS que o visitante clica em "Aceitar".
+   Para ativar, preencha os IDs abaixo (deixe "" para desligar):
+     META_PIXEL_ID  -> número do Pixel da Meta (ex.: "123456789012345")
+     GOOGLE_TAG_ID  -> ID do Google Analytics/Ads (ex.: "G-XXXXXXXXXX" ou "AW-XXXXXXXXX")
+   Sem nenhum ID preenchido, o aviso de cookies não aparece. */
+(function () {
+  var META_PIXEL_ID = "";
+  var GOOGLE_TAG_ID = "";
+  var CHAVE = "bt_cookies_v1";
+  if (!META_PIXEL_ID && !GOOGLE_TAG_ID) return;
+
+  function ler() { try { return localStorage.getItem(CHAVE); } catch (_) { return null; } }
+  function gravar(v) { try { localStorage.setItem(CHAVE, v); } catch (_) {} }
+
+  function carregar() {
+    if (window.__btTags) return; window.__btTags = true;
+    if (GOOGLE_TAG_ID) {
+      var g = document.createElement("script"); g.async = true;
+      g.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GOOGLE_TAG_ID);
+      document.head.appendChild(g);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag("js", new Date()); window.gtag("config", GOOGLE_TAG_ID);
+    }
+    if (META_PIXEL_ID) {
+      !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+        t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+      }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      window.fbq("init", META_PIXEL_ID); window.fbq("track", "PageView");
+    }
+  }
+
+  function aviso() {
+    if (document.getElementById("cookie-aviso")) return;
+    var d = document.createElement("div");
+    d.id = "cookie-aviso"; d.className = "cookie-aviso"; d.setAttribute("role", "dialog"); d.setAttribute("aria-label", "Aviso de cookies");
+    var p = document.createElement("p");
+    p.textContent = "Usamos cookies para medir as visitas e mostrar anúncios da Becher Trader a quem já conhece o site. Você escolhe se aceita. ";
+    var a = document.createElement("a"); a.href = "privacidade.html"; a.textContent = "Saiba mais";
+    p.appendChild(a);
+    var bx = document.createElement("div"); bx.className = "cookie-btns";
+    var ok = document.createElement("button"); ok.type = "button"; ok.className = "btn btn-primary"; ok.textContent = "Aceitar";
+    var no = document.createElement("button"); no.type = "button"; no.className = "btn btn-ghost"; no.textContent = "Recusar";
+    ok.addEventListener("click", function () { gravar("sim"); d.remove(); carregar(); });
+    no.addEventListener("click", function () { gravar("nao"); d.remove(); });
+    bx.appendChild(ok); bx.appendChild(no); d.appendChild(p); d.appendChild(bx);
+    document.body.appendChild(d);
+  }
+
+  var escolha = ler();
+  if (escolha === "sim") carregar(); else if (escolha !== "nao") aviso();
+
+  /* Link "Preferências de cookies" na página de privacidade reabre o aviso */
+  document.querySelectorAll("[data-cookies]").forEach(function (b) {
+    b.addEventListener("click", function (e) { e.preventDefault(); gravar(""); aviso(); });
+  });
+})();

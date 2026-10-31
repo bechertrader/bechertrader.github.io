@@ -357,3 +357,11 @@ footer .areas{flex-basis:100%;order:3;font-size:19px;color:var(--sub);max-width:
 @media (max-width:1100px){.demo-empresas{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:700px){.demo-empresas{grid-template-columns:1fr}.demo-emp{min-height:0}.demo-log{height:380px}.demo-msg{max-width:92%}.demo-form{flex-direction:column}.demo-cta{grid-template-columns:1fr}}
 #conversa,#escolha{scroll-margin-top:90px}
+
+/* Aviso de cookies (LGPD) */
+.cookie-aviso{position:fixed;z-index:60;left:0;right:0;bottom:0;background:var(--nav);border-top:2px solid var(--gold);box-shadow:0 -10px 30px rgba(0,0,0,.5);padding:20px max(16px,env(safe-area-inset-left,0px)) calc(20px + env(safe-area-inset-bottom,0px));display:flex;gap:18px 28px;align-items:center;justify-content:center;flex-wrap:wrap}
+.cookie-aviso p{font-size:21px;color:var(--fg);max-width:62ch}
+.cookie-aviso p a{color:var(--acc);font-weight:700}
+.cookie-btns{display:flex;gap:14px;flex-wrap:wrap}
+.cookie-btns .btn{min-width:150px}
+@media (max-width:640px){.cookie-btns{width:100%}.cookie-btns .btn{flex:1}}
