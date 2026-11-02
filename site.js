@@ -2,7 +2,7 @@
 (function () {
   /* Endereço do App da Web no Google Apps Script (projeto Agente Atendimento Cursos) */
   var API_URL = "https://script.google.com/macros/s/AKfycbxoXWTVZGo9GpZccJTdJAehRXo-HloP-RxPTLC6gYHEZ7OrNUl4h88CRkZeohIUGfFaHg/exec";
-  var FONE = "5541988927722";
+  var FONE = "5541976075189";
   var $ = function (id) { return document.getElementById(id); };
 
   /* ---------- Menu no celular ---------- */
@@ -107,7 +107,7 @@
         .then(function (r) { return r.json(); })
         .then(function (r) {
           if (r.ok) { avisar("ok", r.resposta || "Pronto! Você está na lista. Avisaremos quando a turma fechar."); fi.reset(); }
-          else avisar("erro", r.resposta || "Não foi possível enviar agora. Fale com a gente pelo WhatsApp (41) 98892-7722.");
+          else avisar("erro", r.resposta || "Não foi possível enviar agora. Fale com a gente pelo WhatsApp (41) 97607-5189.");
         })
         .catch(function () { avisar("erro", "Não foi possível enviar agora. Tente de novo ou fale com a gente pelo WhatsApp."); })
         .then(function () { ienv.disabled = false; ienv.textContent = "Entrar na lista"; });
@@ -202,7 +202,7 @@
      GOOGLE_TAG_ID  -> ID do Google Analytics/Ads (ex.: "G-XXXXXXXXXX" ou "AW-XXXXXXXXX")
    Sem nenhum ID preenchido, o aviso de cookies não aparece. */
 (function () {
-  var META_PIXEL_ID = "1910746080287870";
+  var META_PIXEL_ID = "";
   var GOOGLE_TAG_ID = "G-7L3DZFTHVD";
   var CHAVE = "bt_cookies_v1";
   if (!META_PIXEL_ID && !GOOGLE_TAG_ID) return;
