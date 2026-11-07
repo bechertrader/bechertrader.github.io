@@ -378,3 +378,7 @@ footer .areas{flex-basis:100%;order:3;font-size:19px;color:var(--sub);max-width:
 .video-aviso{font-family:var(--f-mono);font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);border-radius:4px;padding:6px 12px}
 @media (max-width:760px){.videos{grid-template-columns:1fr}}
 .produtos-lista label{font-weight:700}
+/* 07/11/2026: dois destaques (MENTHOR e GUARDIÃO) na home, levando à demonstração */
+.lanc-duplo{display:grid;gap:18px}
+.aviso-profit{font-size:22px;color:var(--fg);background:rgba(200,168,75,.12);border-left:5px solid var(--gold);border-radius:6px;padding:12px 16px;margin:0;max-width:72ch}
+.aviso-profit b{color:var(--gold)}

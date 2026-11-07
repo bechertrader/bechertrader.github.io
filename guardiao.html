@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GUARDIÃO e GUARDIÃO REPLICADOR, proteção operacional para o MetaTrader 5 | Becher Trader</title>
-<meta name="description" content="GUARDIÃO: o seu plano de trading travado no MetaTrader 5. Boleta com stop e alvo, loss do dia, lote e stop por operação sob controle, entradas fora da boleta desfeitas na hora. GUARDIÃO REPLICADOR: uma operação replicada em várias contas, com as mesmas proteções. Lançamento em breve.">
+<meta name="description" content="GUARDIÃO: assume o controle do MetaTrader 5 e trava o seu plano de trading na plataforma. Boleta com stop e alvo, loss do dia, lote e stop por operação sob controle, entradas fora da boleta desfeitas na hora. GUARDIÃO REPLICADOR: uma operação replicada em várias contas, com as mesmas proteções. Versão para Profit em construção. Lançamento em breve.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Becher Trader">
 <meta property="og:locale" content="pt_BR">
@@ -23,6 +23,8 @@
 .selo{justify-self:start;font-family:var(--f-mono);font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border-radius:4px;background:rgba(200,168,75,.14);color:var(--gold);border:1px solid var(--gold)}
 .aceite label{align-items:flex-start!important}
 .aceite input{margin-top:4px!important}
+.sub-tit{font-size:clamp(32px,3vw,40px);color:var(--gold);margin:34px 0 4px}
+.sub-txt{font-size:22px;color:var(--sub);margin:0 0 8px;max-width:72ch}
 </style>
 </head>
 <body>
@@ -59,8 +61,9 @@
   <div class="wrap">
     <span class="selo">Lançamento em breve</span>
     <h1>GUARDIÃO</h1>
-    <p>Proteção operacional para o MetaTrader 5. O seu plano de trading vira regra travada na plataforma, para a disciplina não depender da força de vontade no meio do pregão.</p>
-    <div class="cta"><a class="btn btn-gold" href="#lista">Quero entrar na lista de interessados</a></div>
+    <p>Proteção operacional para o MetaTrader 5. Ligado ao gráfico, o GUARDIÃO assume o controle do MetaTrader 5: o seu plano de trading vira regra travada na plataforma, para a disciplina não depender da força de vontade no meio do pregão.</p>
+    <p class="aviso-profit"><b>Versão para Profit:</b> em construção, lançamento em breve.</p>
+    <div class="cta"><a class="btn btn-gold" href="#videos">Ver a demonstração</a> <a class="btn btn-primary" href="#lista">Quero entrar na lista de interessados</a></div>
   </div>
 </div>
 
@@ -69,11 +72,12 @@
     <div class="head">
       <p class="eyebrow">O que é</p>
       <h2>Um robô de disciplina, não de operação</h2>
-      <p>O GUARDIÃO não opera por você e não dá sinal de compra ou venda. Ele fica no gráfico do MetaTrader 5, vigia cada entrada e faz valer as regras que você definiu com a cabeça fria, antes do pregão.</p>
+      <p>O GUARDIÃO não opera por você e não dá sinal de compra ou venda. Ele assume o controle do MetaTrader 5, vigia cada entrada e faz valer as regras que você definiu com a cabeça fria, antes do pregão.</p>
     </div>
     <ul class="lista2">
+      <li><b>Assume o controle do MetaTrader 5</b><span>Ligado ao gráfico, o GUARDIÃO passa a comandar a plataforma: toda entrada passa por ele e só é aceita se estiver dentro do plano.</span></li>
       <li><b>Boleta no gráfico</b><span>Ordem a mercado ou ordem limite, já com stop e alvo, numa boleta pequena e simples, com botão de liga e desliga.</span></li>
-      <li><b>Loss do dia travado</b><span>Chegou no limite de perda do plano, o GUARDIÃO bloqueia novas entradas até o fim do horário operacional do dia.</span></li>
+      <li><b>Loss do dia travado</b><span>Chegou no limite de perda do plano, o GUARDIÃO bloqueia novas entradas e fecha o MetaTrader 5 até o fim do horário operacional do dia.</span></li>
       <li><b>Lote sob controle</b><span>Limite de contratos por ordem e de posição total aberta, valendo também para cada aumento de posição.</span></li>
       <li><b>Stop máximo por operação</b><span>A perda de cada operação fica dentro do valor que você definiu no plano.</span></li>
       <li><b>Ritmo do dia</b><span>Quantidade máxima de operações, de perdas seguidas e intervalo mínimo entre uma operação e outra.</span></li>
@@ -87,15 +91,25 @@
     <div class="head">
       <p class="eyebrow">Para quem opera mais de uma conta</p>
       <h2>GUARDIÃO REPLICADOR</h2>
-      <p>Você opera na conta mestre e o REPLICADOR copia as operações para as outras contas, com as mesmas proteções do GUARDIÃO em todas elas.</p>
+      <p>O REPLICADOR é o GUARDIÃO completo, com a replicação de operações. Você opera na conta mestre e ele copia as operações para as outras contas, com todas as proteções do GUARDIÃO em cada uma delas.</p>
     </div>
+    <h3 class="sub-tit">A parte do GUARDIÃO, em todas as contas</h3>
+    <p class="sub-txt">Tudo o que o GUARDIÃO faz vem junto no REPLICADOR, valendo na conta mestre e em cada conta réplica.</p>
+    <ul class="lista2">
+      <li><b>Assume o controle do MetaTrader 5</b><span>Em cada conta, toda entrada passa pelo REPLICADOR e só é aceita se estiver dentro do plano.</span></li>
+      <li><b>Boleta no gráfico</b><span>Ordem a mercado ou ordem limite, já com stop e alvo, na conta mestre.</span></li>
+      <li><b>Loss do dia travado</b><span>Chegou no limite de perda do plano, novas entradas são bloqueadas em todas as contas até o fim do horário operacional.</span></li>
+      <li><b>Lote e stop sob controle</b><span>Limite de contratos por ordem e de posição total aberta, e stop máximo por operação.</span></li>
+      <li><b>Ritmo do dia</b><span>Quantidade máxima de operações, de perdas seguidas e intervalo mínimo entre uma operação e outra, valendo também para os aumentos de posição.</span></li>
+      <li><b>Sem atalhos</b><span>Entrada feita fora da boleta, pelo celular, pela web ou por outro robô, é desfeita na hora.</span></li>
+    </ul>
+    <h3 class="sub-tit">A parte da replicação</h3>
     <ul class="lista2">
       <li><b>Uma operação, várias contas</b><span>Entradas, saídas, parciais, stop e alvo da conta mestre são replicados nas outras contas.</span></li>
       <li><b>Stop e alvo travados nas réplicas</b><span>Mudou na conta mestre, muda em todas. Nas contas réplicas, ninguém mexe por fora.</span></li>
       <li><b>Proteção se a mestre cair</b><span>As réplicas nunca abrem posição sozinhas: só podem encerrar. Se a mestre voltar com a mesma posição, elas voltam a segui-la.</span></li>
-      <li><b>Os mesmos limites do plano</b><span>Loss do dia, lote, stop por operação, quantidade de operações e intervalo valem para todas as contas.</span></li>
     </ul>
-    <p class="note">O GUARDIÃO e o GUARDIÃO REPLICADOR funcionam no MetaTrader 5 instalado no seu computador: com o computador desligado ou sem internet, eles não protegem. São ferramentas de apoio à disciplina e não substituem o acompanhamento de um profissional. Operar na bolsa de valores envolve risco. Resultados passados não garantem resultados futuros.</p>
+    <p class="note"><strong>Versão para Profit em construção, lançamento em breve.</strong> O GUARDIÃO e o GUARDIÃO REPLICADOR funcionam no MetaTrader 5 instalado no seu computador: com o computador desligado ou sem internet, eles não protegem. São ferramentas de apoio à disciplina e não substituem o acompanhamento de um profissional. Operar na bolsa de valores envolve risco. Resultados passados não garantem resultados futuros.</p>
   </div>
 </section>
 
@@ -110,6 +124,7 @@
       <div class="video" data-yt="" data-titulo="GUARDIÃO: o plano de trading travado no MetaTrader 5"></div>
       <div class="video" data-yt="" data-titulo="GUARDIÃO REPLICADOR: uma operação, várias contas"></div>
     </div>
+    <div class="cta" style="margin-top:28px"><a class="btn btn-gold" href="#lista">Quero entrar na lista de interessados</a></div>
   </div>
 </section>
 
