@@ -382,3 +382,26 @@ footer .areas{flex-basis:100%;order:3;font-size:19px;color:var(--sub);max-width:
 .lanc-duplo{display:grid;gap:18px}
 .aviso-profit{font-size:22px;color:var(--fg);background:rgba(200,168,75,.12);border-left:5px solid var(--gold);border-radius:6px;padding:12px 16px;margin:0;max-width:72ch}
 .aviso-profit b{color:var(--gold)}
+/* 07/11/2026: home só traders, página Empresas, card GUARDIÃO x MENTHOR */
+.lados.lados-um{grid-template-columns:1fr}
+@media (min-width:900px){.lados-um .lanc-duplo{grid-template-columns:1fr 1fr}.lados-um .lado-lista{grid-template-columns:1fr 1fr;column-gap:40px}}
+.chamada-carga{background:linear-gradient(135deg,rgba(96,184,255,.18),rgba(96,184,255,.04));border:3px solid var(--acc);border-radius:14px;padding:28px 30px 32px;display:grid;gap:16px}
+.chamada-carga h2{font-size:clamp(38px,4vw,56px);color:var(--acc)}
+.chamada-carga h3{font-size:clamp(30px,3vw,38px);color:var(--fg);margin-top:8px}
+.chamada-carga>p{font-size:23px;line-height:1.55;color:var(--fg);margin:0;max-width:75ch}
+@media (min-width:900px){.chamada-carga .lado-lista{grid-template-columns:1fr 1fr;column-gap:40px}}
+@media (max-width:640px){.chamada-carga{padding:22px 18px 26px}.chamada-carga>p{font-size:21px}}
+.comp{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.comp-col{display:grid;gap:14px;align-content:start;background:rgba(9,22,64,.94);border:2px solid var(--line);border-top:6px solid var(--gold);border-radius:14px;padding:26px 26px 28px}
+.comp-menthor{border-top-color:var(--acc)}
+.comp-nome{font-family:var(--f-display);font-size:56px;line-height:1;letter-spacing:.04em;color:var(--gold)}
+.comp-menthor .comp-nome{color:var(--acc)}
+.comp-frase{font-size:26px;font-weight:700;color:var(--fg);margin:0}
+.comp-col dl{margin:0;display:grid;gap:0}
+.comp-col dt{font-family:var(--f-mono);font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);padding-top:14px;border-top:1px solid var(--line)}
+.comp-col dd{margin:6px 0 14px;font-size:22px;line-height:1.5;color:var(--fg)}
+.comp-col .btn{justify-self:start}
+.comp-rodape{margin-top:28px;font-size:24px;line-height:1.5;color:var(--fg);border-left:5px solid var(--gold);padding:6px 0 6px 18px;max-width:80ch}
+@media (max-width:860px){.comp{grid-template-columns:1fr}.comp-col .btn{justify-self:stretch;text-align:center}}
+.independente{font-size:23px;color:var(--fg);margin:0;max-width:80ch}
+.independente a{font-weight:700}
