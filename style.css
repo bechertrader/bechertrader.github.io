@@ -209,8 +209,8 @@ footer nav a:hover{color:var(--fg)}
 .chat-form button:disabled{opacity:.6;cursor:wait}
 .chat-note{margin:0;padding:0 14px 12px;font-size:15px;color:var(--sub);background:var(--nav)}
 
-@media (max-width:1320px) and (min-width:1241px){.menu a.menu-cta{display:none}}
-@media (max-width:1240px){
+@media (max-width:1500px) and (min-width:1421px){.menu a.menu-cta{display:none}}
+@media (max-width:1420px){
   .menu-btn{display:inline-flex;align-items:center}
   .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--nav);border-bottom:1px solid var(--line);padding:8px 16px 16px}
   .menu.aberto{display:flex}
@@ -365,3 +365,16 @@ footer .areas{flex-basis:100%;order:3;font-size:19px;color:var(--sub);max-width:
 .cookie-btns{display:flex;gap:14px;flex-wrap:wrap}
 .cookie-btns .btn{min-width:150px}
 @media (max-width:640px){.cookie-btns{width:100%}.cookie-btns .btn{flex:1}}
+
+/* Vídeos de demonstração (07/11/2026) */
+.videos{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.video{position:relative;aspect-ratio:16/9;background:var(--nav);border:1px solid var(--line);border-radius:10px;overflow:hidden;min-width:0}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-capa{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:#000 center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--fg)}
+.video-capa::before{content:"";position:absolute;inset:0;background:rgba(6,12,36,.45)}
+.video-play{position:relative;width:84px;height:84px;border-radius:50%;background:var(--gold);color:#1a1405;font-size:34px;display:flex;align-items:center;justify-content:center;padding-left:6px}
+.video-tit{position:relative;font-weight:700;font-size:22px;text-align:center;padding:0 16px;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.video-breve{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:18px}
+.video-aviso{font-family:var(--f-mono);font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);border-radius:4px;padding:6px 12px}
+@media (max-width:760px){.videos{grid-template-columns:1fr}}
+.produtos-lista label{font-weight:700}

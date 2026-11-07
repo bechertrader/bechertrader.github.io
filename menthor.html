@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MENTHOR, mentoria para traders conduzida por IA | Becher Trader</title>
-<meta name="description" content="MENTHOR: plataforma de mentoria para traders conduzida por inteligência artificial. Plano de trading, importação do Profit, avaliação diária do pregão e conversa com a IA sobre o seu dia. Lançamento em breve. Entre na lista de interessados.">
+<meta name="description" content="MENTHOR: plataforma de mentoria para traders conduzida por inteligência artificial. Plano de trading, importação do Profit ou do MetaTrader 5, avaliação diária do pregão e conversa com a IA sobre o seu dia. Lançamento em breve. Entre na lista de interessados.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Becher Trader">
 <meta property="og:locale" content="pt_BR">
@@ -44,6 +44,7 @@
       <a href="index.html">Início</a>
       <a href="plataformas.html">Traders</a>
       <a href="menthor.html" aria-current="page" class="menu-menthor">MENTHOR</a>
+      <a href="guardiao.html" class="menu-menthor">GUARDIÃO</a>
       <a href="consultoria.html">Empresas</a>
       <a href="cursos.html">Cursos</a>
       <a href="sobre.html">Sobre</a>
@@ -81,14 +82,31 @@
       <h2>Do plano ao comportamento</h2>
     </div>
     <ul class="lista2">
-      <li><b>Plano de Trading</b><span>Você define as suas regras: meta do dia, loss do dia, lote máximo, quantidade de operações, perdas seguidas, quanto devolver do topo e horário.</span></li>
-      <li><b>Importação do Profit</b><span>Você importa o relatório de operações e o MENTHOR mostra na hora quais regras foram respeitadas e quais foram quebradas.</span></li>
+      <li><b>Plano de Trading</b><span>Você define as suas regras. Obrigatórias: meta do dia, loss do dia, lote máximo, quantidade de operações e perdas seguidas. Opcionais: stop máximo por operação, lote por ordem, intervalo entre operações, quanto devolver do topo e horário.</span></li>
+      <li><b>Importação do Profit ou do MetaTrader 5</b><span>Você importa o relatório de operações e o MENTHOR mostra na hora, métrica por métrica e com o valor do dia, quais regras foram respeitadas e quais foram quebradas.</span></li>
       <li><b>Avaliação diária com IA</b><span>Cada pregão recebe uma avaliação com os seus números: o padrão de comportamento por trás das operações e pontos práticos para o próximo dia.</span></li>
       <li><b>Converse com o MENTHOR</b><span>Depois da avaliação, você faz perguntas sobre o seu próprio dia, e a resposta vem com os horários, preços e lotes das suas operações.</span></li>
       <li><b>Avaliação a cada 5 pregões</b><span>Uma leitura comportamental do período, juntando conta real e simulador, para mostrar a sua evolução.</span></li>
       <li><b>Dashboard e Financeiro</b><span>A sua evolução em gráficos e o controle financeiro das operações, com cálculo automático da DARF.</span></li>
     </ul>
     <p class="note">O MENTHOR é uma ferramenta de apoio à formação do trader e não substitui o acompanhamento de um profissional. Operar na bolsa de valores envolve risco. Resultados passados não garantem resultados futuros.</p>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Demonstração</p>
+      <h2>Veja o MENTHOR funcionando</h2>
+      <p>Tela por tela, com pregões reais de um trader de demonstração: dias bons, dias muito ruins e o que o MENTHOR mostrou em cada um.</p>
+    </div>
+    <div class="videos">
+      <div class="video" data-yt="" data-titulo="O que é o MENTHOR"></div>
+      <div class="video" data-yt="" data-titulo="Plano de Trading"></div>
+      <div class="video" data-yt="" data-titulo="Avaliação diária: dias bons e dias muito ruins"></div>
+      <div class="video" data-yt="" data-titulo="Converse com o MENTHOR"></div>
+    </div>
+    <div class="cta" style="margin-top:28px"><a class="btn btn-gold" href="#lista">Quero entrar na lista de interessados</a></div>
   </div>
 </section>
 
@@ -99,7 +117,7 @@
       <h2>Seja avisado no lançamento</h2>
       <p>Deixe seus dados. Os inscritos na lista são os primeiros a saber da data de lançamento e das condições de lançamento. Não tem compromisso.</p>
     </div>
-    <form class="form form-lista" id="f-menthor" novalidate>
+    <form class="form form-lista" id="f-menthor" data-produto-padrao="MENTHOR" novalidate>
       <div class="field">
         <label for="m-nome">Seu nome</label>
         <input id="m-nome" name="nome" autocomplete="name" placeholder="Ex.: Maria Souza" required>
@@ -114,6 +132,12 @@
           <input id="m-tel" name="telefone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(41) 99999-9999">
         </div>
       </div>
+      <fieldset class="opcoes produtos-lista">
+        <legend>Quero ser avisado do lançamento de <small>(pode marcar mais de um)</small></legend>
+        <label><input type="checkbox" name="produto" value="MENTHOR"> MENTHOR</label>
+        <label><input type="checkbox" name="produto" value="GUARDIÃO"> GUARDIÃO</label>
+        <label><input type="checkbox" name="produto" value="GUARDIÃO REPLICADOR"> GUARDIÃO REPLICADOR</label>
+      </fieldset>
       <fieldset class="opcoes">
         <legend>Há quanto tempo você opera?</legend>
         <label><input type="radio" name="experiencia" value="Ainda não opero"> Ainda não opero</label>
@@ -136,12 +160,13 @@
           <option>Facebook</option>
           <option>Indicação</option>
           <option>Evento</option>
+          <option>Profit Summit</option>
           <option>Outro</option>
         </select>
       </div>
       <fieldset class="opcoes aceite">
         <legend>Autorização</legend>
-        <label><input type="checkbox" id="m-aceite" name="aceite" value="Sim"> Autorizo a Becher Trader a usar meus dados apenas para avisar sobre o lançamento do MENTHOR e novidades da Becher Trader. Posso pedir a exclusão a qualquer momento.</label>
+        <label><input type="checkbox" id="m-aceite" name="aceite" value="Sim"> Autorizo a Becher Trader a usar meus dados apenas para avisar sobre o lançamento dos produtos marcados e novidades da Becher Trader. Posso pedir a exclusão a qualquer momento.</label>
       </fieldset>
       <div class="hp" aria-hidden="true"><label for="m-site">Não preencha</label><input id="m-site" name="site" tabindex="-1" autocomplete="off"></div>
       <p class="msg-form" id="m-retorno" role="status" hidden></p>
@@ -158,7 +183,7 @@
   <div class="wrap">
     <img src="emblema.png" alt="" width="64" height="60">
     <p><b>Becher Trader</b>Gerando Riqueza com Tecnologia · Pontal do Paraná, PR · © 2026</p>
-    <nav aria-label="Rodapé"><a href="index.html">Início</a> <a href="plataformas.html">Traders</a> <a href="menthor.html">MENTHOR</a> <a href="consultoria.html">Empresas</a> <a href="cursos.html">Cursos</a> <a href="sobre.html">Sobre</a> <a href="contato.html">Contato</a> <a href="privacidade.html">Privacidade e cookies</a></nav>
+    <nav aria-label="Rodapé"><a href="index.html">Início</a> <a href="plataformas.html">Traders</a> <a href="menthor.html">MENTHOR</a> <a href="guardiao.html">GUARDIÃO</a> <a href="consultoria.html">Empresas</a> <a href="cursos.html">Cursos</a> <a href="sobre.html">Sobre</a> <a href="contato.html">Contato</a> <a href="privacidade.html">Privacidade e cookies</a></nav>
   </div>
 </footer>
 

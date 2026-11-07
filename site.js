@@ -115,8 +115,33 @@
   }
 
 
-  /* ---------- Lista de interessados do MENTHOR (página MENTHOR) ---------- */
+  /* ---------- Vídeos de demonstração (07/11/2026) ----------
+     <div class="video" data-yt="ID_DO_YOUTUBE" data-titulo="..."></div>
+     Sem ID: mostra "Vídeo disponível em breve". Com ID: carrega o vídeo
+     do youtube-nocookie só quando o visitante clica (página leve no celular). */
+  Array.prototype.forEach.call(document.querySelectorAll(".video"), function (v) {
+    var id = (v.getAttribute("data-yt") || "").trim(), titulo = v.getAttribute("data-titulo") || "Vídeo";
+    if (!id) { v.classList.add("video-breve"); v.innerHTML = '<span class="video-tit">' + titulo + '</span><span class="video-aviso">Vídeo disponível em breve</span>'; return; }
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "video-capa"; b.setAttribute("aria-label", "Assistir: " + titulo);
+    b.style.backgroundImage = "url(https://i.ytimg.com/vi/" + id + "/hqdefault.jpg)";
+    b.innerHTML = '<span class="video-play" aria-hidden="true">▶</span><span class="video-tit">' + titulo + '</span>';
+    b.addEventListener("click", function () {
+      v.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="' + titulo.replace(/"/g, "") + '" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    });
+    v.appendChild(b);
+  });
+
+  /* ---------- Lista de lançamento: MENTHOR, GUARDIÃO e GUARDIÃO REPLICADOR ---------- */
   var fm = $("f-menthor");
+  var marcarPadrao = function () {
+    if (!fm) return;
+    var padrao = (fm.getAttribute("data-produto-padrao") || "").split(",");
+    Array.prototype.forEach.call(fm.querySelectorAll('input[name="produto"]'), function (x) { x.checked = padrao.indexOf(x.value) >= 0; });
+  };
+  var qsProd = new URLSearchParams(location.search).get("produto");
+  if (fm && qsProd) fm.setAttribute("data-produto-padrao", qsProd.toUpperCase());
+  marcarPadrao();
   if (fm) {
     var mtel = $("m-tel"), mret = $("m-retorno"), menv = $("m-enviar");
     mtel.addEventListener("input", function () {
@@ -134,16 +159,18 @@
       var d = {
         tipo: "menthor", nome: $("m-nome").value.trim(), email: $("m-email").value.trim(), telefone: mtel.value.trim(),
         experiencia: (mMarc("experiencia")[0] || ""), plataformas: mMarc("plataforma"), como_conheceu: $("m-origem").value,
-        aceite: $("m-aceite").checked ? "Sim" : "", origem: origemLink, site: $("m-site").value
+        aceite: $("m-aceite").checked ? "Sim" : "", origem: origemLink, site: $("m-site").value,
+        produtos: (fm.querySelector('input[name="produto"]') ? mMarc("produto") : ["MENTHOR"])
       };
       if (!d.nome) { mAvisar("erro", "Escreva o seu nome."); $("m-nome").focus(); return; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) { mAvisar("erro", "Informe um e-mail válido para avisarmos você."); $("m-email").focus(); return; }
+      if (!d.produtos.length) { mAvisar("erro", "Marque pelo menos um produto de interesse."); return; }
       if (!d.aceite) { mAvisar("erro", "Marque a autorização para entrar na lista."); $("m-aceite").focus(); return; }
       menv.disabled = true; menv.textContent = "Enviando...";
       fetch(API_URL, { method: "POST", body: JSON.stringify(d) })
         .then(function (r) { return r.json(); })
         .then(function (r) {
-          if (r.ok) { mAvisar("ok", r.resposta || "Pronto! Você está na lista do MENTHOR. Avisaremos você no lançamento."); fm.reset(); }
+          if (r.ok) { mAvisar("ok", r.resposta || "Pronto! Você está na lista de lançamento. Avisaremos você no lançamento."); fm.reset(); marcarPadrao(); }
           else mAvisar("erro", r.resposta || "Não foi possível enviar agora. Tente de novo em instantes.");
         })
         .catch(function () { mAvisar("erro", "Não foi possível enviar agora. Tente de novo em instantes ou escreva para bechertrader@gmail.com."); })

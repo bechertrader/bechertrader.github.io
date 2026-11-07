@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GUARDIÃO e GUARDIÃO REPLICADOR, proteção operacional para o MetaTrader 5 | Becher Trader</title>
+<meta name="description" content="GUARDIÃO: o seu plano de trading travado no MetaTrader 5. Boleta com stop e alvo, loss do dia, lote e stop por operação sob controle, entradas fora da boleta desfeitas na hora. GUARDIÃO REPLICADOR: uma operação replicada em várias contas, com as mesmas proteções. Lançamento em breve.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Becher Trader">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="GUARDIÃO e GUARDIÃO REPLICADOR | Becher Trader">
+<meta property="og:description" content="O seu plano de trading travado no MetaTrader 5, para a disciplina não depender da força de vontade. Lançamento em breve. Entre na lista de interessados.">
+<meta property="og:url" content="https://bechertrader.com.br/guardiao.html">
+<meta property="og:image" content="https://bechertrader.com.br/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="emblema.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+.menthor-tela{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px;margin-top:8px}
+.selo{justify-self:start;font-family:var(--f-mono);font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border-radius:4px;background:rgba(200,168,75,.14);color:var(--gold);border:1px solid var(--gold)}
+.aceite label{align-items:flex-start!important}
+.aceite input{margin-top:4px!important}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chat" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c-5.4 0-9.8 4-9.8 9 0 1.9.6 3.6 1.7 5.1L2.6 21.6l5.5-1.6c1.2.5 2.5.8 3.9.8 5.4 0 9.8-4 9.8-9s-4.4-9.6-9.8-9.6zm0 16.6c-1.2 0-2.4-.3-3.4-.8l-.4-.2-3.1.9.8-3-.3-.4a6.9 6.9 0 0 1-1.4-4.1c0-3.9 3.5-7 7.8-7s7.8 3.1 7.8 7-3.5 7.6-7.8 7.6zm4.1-5.3c-.2-.1-1.3-.7-1.6-.7-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-.9-1-1.2-1.6-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1.1.9.4 1.8 1 2.6 1.1 1.6 2.5 2.8 4.3 3.5.5.2 1 .3 1.5.4.5.1 1.1 0 1.6-.3.4-.2.7-.6.8-1 .1-.2.1-.5 0-.7-.1-.3-.3-.4-.6-.5z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 5h18v14H3z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M3 6l9 7 9-7"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path fill="currentColor" d="M10 9l5 3-5 3z"/></symbol>
+  <symbol id="i-ajuda" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.2 9.3a2.9 2.9 0 0 1 5.6 1c0 1.9-2.8 2.4-2.8 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.3" fill="currentColor"/></symbol>
+</svg>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Becher Trader, página inicial">
+      <img src="emblema.png" alt="" width="52" height="49">
+      <span class="brand-txt"><b>BECHER <span>TRADER</span></b><small>Gerando Riqueza com Tecnologia</small></span>
+    </a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-controls="menu" aria-expanded="false">Menu</button>
+    <nav class="menu" id="menu" aria-label="Páginas do site">
+      <a href="index.html">Início</a>
+      <a href="plataformas.html">Traders</a>
+      <a href="menthor.html" class="menu-menthor">MENTHOR</a>
+      <a href="guardiao.html" aria-current="page" class="menu-menthor">GUARDIÃO</a>
+      <a href="consultoria.html">Empresas</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+<div class="page-head">
+  <div class="wrap">
+    <span class="selo">Lançamento em breve</span>
+    <h1>GUARDIÃO</h1>
+    <p>Proteção operacional para o MetaTrader 5. O seu plano de trading vira regra travada na plataforma, para a disciplina não depender da força de vontade no meio do pregão.</p>
+    <div class="cta"><a class="btn btn-gold" href="#lista">Quero entrar na lista de interessados</a></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">O que é</p>
+      <h2>Um robô de disciplina, não de operação</h2>
+      <p>O GUARDIÃO não opera por você e não dá sinal de compra ou venda. Ele fica no gráfico do MetaTrader 5, vigia cada entrada e faz valer as regras que você definiu com a cabeça fria, antes do pregão.</p>
+    </div>
+    <ul class="lista2">
+      <li><b>Boleta no gráfico</b><span>Ordem a mercado ou ordem limite, já com stop e alvo, numa boleta pequena e simples, com botão de liga e desliga.</span></li>
+      <li><b>Loss do dia travado</b><span>Chegou no limite de perda do plano, o GUARDIÃO bloqueia novas entradas até o fim do horário operacional do dia.</span></li>
+      <li><b>Lote sob controle</b><span>Limite de contratos por ordem e de posição total aberta, valendo também para cada aumento de posição.</span></li>
+      <li><b>Stop máximo por operação</b><span>A perda de cada operação fica dentro do valor que você definiu no plano.</span></li>
+      <li><b>Ritmo do dia</b><span>Quantidade máxima de operações, de perdas seguidas e intervalo mínimo entre uma operação e outra.</span></li>
+      <li><b>Sem atalhos</b><span>Entrada feita fora da boleta, pelo celular, pela web ou por outro robô, é desfeita na hora. Pelo celular você pode sair de uma posição, mas não abrir.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Para quem opera mais de uma conta</p>
+      <h2>GUARDIÃO REPLICADOR</h2>
+      <p>Você opera na conta mestre e o REPLICADOR copia as operações para as outras contas, com as mesmas proteções do GUARDIÃO em todas elas.</p>
+    </div>
+    <ul class="lista2">
+      <li><b>Uma operação, várias contas</b><span>Entradas, saídas, parciais, stop e alvo da conta mestre são replicados nas outras contas.</span></li>
+      <li><b>Stop e alvo travados nas réplicas</b><span>Mudou na conta mestre, muda em todas. Nas contas réplicas, ninguém mexe por fora.</span></li>
+      <li><b>Proteção se a mestre cair</b><span>As réplicas nunca abrem posição sozinhas: só podem encerrar. Se a mestre voltar com a mesma posição, elas voltam a segui-la.</span></li>
+      <li><b>Os mesmos limites do plano</b><span>Loss do dia, lote, stop por operação, quantidade de operações e intervalo valem para todas as contas.</span></li>
+    </ul>
+    <p class="note">O GUARDIÃO e o GUARDIÃO REPLICADOR funcionam no MetaTrader 5 instalado no seu computador: com o computador desligado ou sem internet, eles não protegem. São ferramentas de apoio à disciplina e não substituem o acompanhamento de um profissional. Operar na bolsa de valores envolve risco. Resultados passados não garantem resultados futuros.</p>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Demonstração</p>
+      <h2>Veja o GUARDIÃO funcionando</h2>
+      <p>Gravado num pregão de verdade, na conta de demonstração.</p>
+    </div>
+    <div class="videos">
+      <div class="video" data-yt="" data-titulo="GUARDIÃO: o plano de trading travado no MetaTrader 5"></div>
+      <div class="video" data-yt="" data-titulo="GUARDIÃO REPLICADOR: uma operação, várias contas"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Juntos com o MENTHOR</p>
+      <h2>O GUARDIÃO protege no pregão. O MENTHOR mostra o porquê.</h2>
+      <p>O GUARDIÃO segura a mão durante o pregão. Depois, o MENTHOR lê o relatório do MetaTrader 5 e mostra o comportamento por trás de cada decisão, para você corrigir a causa e não só o sintoma.</p>
+    </div>
+    <div class="cta"><a class="btn btn-primary" href="menthor.html">Conhecer o MENTHOR</a></div>
+  </div>
+</section>
+
+<section id="lista">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Lista de interessados</p>
+      <h2>Seja avisado no lançamento</h2>
+      <p>Deixe seus dados. Os inscritos na lista são os primeiros a saber da data de lançamento e das condições de lançamento. Não tem compromisso.</p>
+    </div>
+    <form class="form form-lista" id="f-menthor" data-produto-padrao="GUARDIÃO" novalidate>
+      <div class="field">
+        <label for="m-nome">Seu nome</label>
+        <input id="m-nome" name="nome" autocomplete="name" placeholder="Ex.: Maria Souza" required>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="m-email">E-mail</label>
+          <input id="m-email" name="email" type="email" autocomplete="email" placeholder="seu@email.com" required>
+        </div>
+        <div class="field">
+          <label for="m-tel">WhatsApp <small>(opcional)</small></label>
+          <input id="m-tel" name="telefone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(41) 99999-9999">
+        </div>
+      </div>
+      <fieldset class="opcoes produtos-lista">
+        <legend>Quero ser avisado do lançamento de <small>(pode marcar mais de um)</small></legend>
+        <label><input type="checkbox" name="produto" value="MENTHOR"> MENTHOR</label>
+        <label><input type="checkbox" name="produto" value="GUARDIÃO"> GUARDIÃO</label>
+        <label><input type="checkbox" name="produto" value="GUARDIÃO REPLICADOR"> GUARDIÃO REPLICADOR</label>
+      </fieldset>
+      <fieldset class="opcoes">
+        <legend>Há quanto tempo você opera?</legend>
+        <label><input type="radio" name="experiencia" value="Ainda não opero"> Ainda não opero</label>
+        <label><input type="radio" name="experiencia" value="Menos de 1 ano"> Menos de 1 ano</label>
+        <label><input type="radio" name="experiencia" value="De 1 a 3 anos"> De 1 a 3 anos</label>
+        <label><input type="radio" name="experiencia" value="Mais de 3 anos"> Mais de 3 anos</label>
+      </fieldset>
+      <fieldset class="opcoes">
+        <legend>Plataforma que você usa <small>(pode marcar mais de uma)</small></legend>
+        <label><input type="checkbox" name="plataforma" value="Profit"> Profit</label>
+        <label><input type="checkbox" name="plataforma" value="MetaTrader 5"> MetaTrader 5</label>
+        <label><input type="checkbox" name="plataforma" value="Outra"> Outra</label>
+      </fieldset>
+      <div class="field">
+        <label for="m-origem">Como conheceu a Becher Trader? <small>(opcional)</small></label>
+        <select id="m-origem" name="como_conheceu">
+          <option value="">Escolha uma opção</option>
+          <option>YouTube</option>
+          <option>Instagram</option>
+          <option>Facebook</option>
+          <option>Indicação</option>
+          <option>Evento</option>
+          <option>Profit Summit</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <fieldset class="opcoes aceite">
+        <legend>Autorização</legend>
+        <label><input type="checkbox" id="m-aceite" name="aceite" value="Sim"> Autorizo a Becher Trader a usar meus dados apenas para avisar sobre o lançamento dos produtos marcados e novidades da Becher Trader. Posso pedir a exclusão a qualquer momento.</label>
+      </fieldset>
+      <div class="hp" aria-hidden="true"><label for="m-site">Não preencha</label><input id="m-site" name="site" tabindex="-1" autocomplete="off"></div>
+      <p class="msg-form" id="m-retorno" role="status" hidden></p>
+      <div class="form-acoes">
+        <button class="btn btn-gold" id="m-enviar" type="submit">Entrar na lista</button>
+      </div>
+      <p class="form-foot">Seus dados não são compartilhados com terceiros. Para sair da lista, escreva para bechertrader@gmail.com.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="emblema.png" alt="" width="64" height="60">
+    <p><b>Becher Trader</b>Gerando Riqueza com Tecnologia · Pontal do Paraná, PR · © 2026</p>
+    <nav aria-label="Rodapé"><a href="index.html">Início</a> <a href="plataformas.html">Traders</a> <a href="menthor.html">MENTHOR</a> <a href="guardiao.html">GUARDIÃO</a> <a href="consultoria.html">Empresas</a> <a href="cursos.html">Cursos</a> <a href="sobre.html">Sobre</a> <a href="contato.html">Contato</a> <a href="privacidade.html">Privacidade e cookies</a></nav>
+  </div>
+</footer>
+
+<a class="btn btn-zap float-zap" href="https://wa.me/5541976075189?text=Ol%C3%A1%2C%20Becher!%20Vim%20pelo%20site%20da%20Becher%20Trader." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+  <svg aria-hidden="true"><use href="#i-chat"/></svg><span>WhatsApp</span>
+</a>
+<button class="chat-fab" id="chat-abrir" type="button" aria-controls="chat-box" aria-expanded="false">
+  <svg aria-hidden="true"><use href="#i-ajuda"/></svg><span>Tire sua dúvida</span>
+</button>
+<div class="chat-box" id="chat-box" role="dialog" aria-label="Atendimento virtual da Becher Trader" hidden>
+  <div class="chat-head">
+    <img src="emblema.png" alt="" width="40" height="38">
+    <div><b>Atendimento Becher Trader</b><small>Assistente virtual com inteligência artificial</small></div>
+    <button class="chat-close" id="chat-fechar" type="button" aria-label="Fechar atendimento">×</button>
+  </div>
+  <div class="chat-log" id="chat-log" aria-live="polite"></div>
+  <form class="chat-form" id="chat-form">
+    <label for="chat-txt" class="vh">Sua dúvida</label>
+    <textarea id="chat-txt" rows="1" maxlength="800" placeholder="Digite sua dúvida..."></textarea>
+    <button type="submit" id="chat-enviar">Enviar</button>
+  </form>
+  <p class="chat-note">Respostas automáticas. Para falar com uma pessoa, use o WhatsApp.</p>
+</div>
+<script src="site.js"></script>
+</body>
+</html>
