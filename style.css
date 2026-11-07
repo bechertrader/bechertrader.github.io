@@ -405,3 +405,8 @@ footer .areas{flex-basis:100%;order:3;font-size:19px;color:var(--sub);max-width:
 @media (max-width:860px){.comp{grid-template-columns:1fr}.comp-col .btn{justify-self:stretch;text-align:center}}
 .independente{font-size:23px;color:var(--fg);margin:0;max-width:80ch}
 .independente a{font-weight:700}
+.lado-jornada{border-top:6px solid var(--gold)}
+.lanc-jornada .lanc-nome{font-size:clamp(38px,3.6vw,52px);line-height:1.05}
+.entrada-topo .cta{margin-top:8px}
+html{scroll-behavior:smooth}
+
