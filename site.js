@@ -185,10 +185,25 @@
   var ZAP = "https://wa.me/" + FONE + "?text=" + encodeURIComponent("Olá! Vim pelo atendimento do site da Becher Trader.");
   /* Link com ?chat=1 (saudação do WhatsApp Business): já abre o tira-dúvidas */
   var abrirDireto = new URLSearchParams(location.search).get("chat") === "1";
+  /* Nas respostas do assistente, endereços de sites e e-mails viram links clicáveis */
+  function escreverComLinks(el, texto) {
+    var re = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}|(?:https?:\/\/|www\.)[^\s]+|(?:[a-z0-9-]+\.)+(?:com\.br|com|ai)(?![a-z0-9-])(?:[\/#?][^\s]*)?/gi;
+    var pos = 0, m;
+    while ((m = re.exec(texto))) {
+      var alvo = m[0].replace(/[.,;:!?)\]"'»]+$/, "");
+      el.appendChild(document.createTextNode(texto.slice(pos, m.index)));
+      var a = document.createElement("a");
+      a.href = alvo.indexOf("@") > 0 && !/^https?:/i.test(alvo) ? "mailto:" + alvo : (/^https?:/i.test(alvo) ? alvo : "https://" + alvo);
+      a.target = "_blank"; a.rel = "noopener"; a.textContent = alvo;
+      el.appendChild(a);
+      pos = m.index + alvo.length; re.lastIndex = pos;
+    }
+    el.appendChild(document.createTextNode(texto.slice(pos)));
+  }
   function add(de, texto, humano) {
     var d = document.createElement("div");
     d.className = "msg " + de + (humano ? " humano" : "");
-    d.textContent = texto;
+    if (de === "bot") escreverComLinks(d, texto); else d.textContent = texto;
     if (humano) {
       var a = document.createElement("a"); a.href = ZAP; a.target = "_blank"; a.rel = "noopener"; a.className = "zap"; a.textContent = "Abrir o WhatsApp";
       d.appendChild(document.createElement("br")); d.appendChild(a);
@@ -198,9 +213,7 @@
   function alternar(mostrar) {
     box.hidden = !mostrar; abrir.hidden = mostrar; abrir.setAttribute("aria-expanded", String(mostrar));
     if (mostrar) {
-      if (!log.childElementCount) add("bot", abrirDireto
-        ? "Olá! Sou o assistente virtual da Becher Trader. Posso tirar dúvidas sobre o MENTHOR, o GUARDIÃO, os cursos de Inteligência Artificial e as nossas soluções para empresas. Como posso ajudar?"
-        : "Olá! Sou o assistente virtual da Becher Trader. Posso tirar dúvidas sobre os cursos de Inteligência Artificial e sobre as nossas soluções para empresas: atendente automático, sites, secretária virtual e diagnóstico. Como posso ajudar?");
+      if (!log.childElementCount) add("bot", "Olá! Sou o assistente virtual da Becher Trader. Posso tirar dúvidas sobre o MENTHOR, o METHODUS, o GUARDIÃO, o GUARDIÃO REPLICADOR, o CONTEXTO, os cursos de Inteligência Artificial e as nossas soluções para empresas. Como posso ajudar?");
       setTimeout(function () { txt.focus(); }, 50);
     } else abrir.focus();
   }
