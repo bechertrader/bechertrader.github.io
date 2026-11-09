@@ -183,6 +183,8 @@
   if (!box || !abrir) return;
   var log = $("chat-log"), form = $("chat-form"), txt = $("chat-txt"), btn = $("chat-enviar"), historico = [];
   var ZAP = "https://wa.me/" + FONE + "?text=" + encodeURIComponent("Olá! Vim pelo atendimento do site da Becher Trader.");
+  /* Link com ?chat=1 (saudação do WhatsApp Business): já abre o tira-dúvidas */
+  var abrirDireto = new URLSearchParams(location.search).get("chat") === "1";
   function add(de, texto, humano) {
     var d = document.createElement("div");
     d.className = "msg " + de + (humano ? " humano" : "");
@@ -196,13 +198,16 @@
   function alternar(mostrar) {
     box.hidden = !mostrar; abrir.hidden = mostrar; abrir.setAttribute("aria-expanded", String(mostrar));
     if (mostrar) {
-      if (!log.childElementCount) add("bot", "Olá! Sou o assistente virtual da Becher Trader. Posso tirar dúvidas sobre os cursos de Inteligência Artificial e sobre as nossas soluções para empresas: atendente automático, sites, secretária virtual e diagnóstico. Como posso ajudar?");
+      if (!log.childElementCount) add("bot", abrirDireto
+        ? "Olá! Sou o assistente virtual da Becher Trader. Posso tirar dúvidas sobre o MENTHOR, o GUARDIÃO, os cursos de Inteligência Artificial e as nossas soluções para empresas. Como posso ajudar?"
+        : "Olá! Sou o assistente virtual da Becher Trader. Posso tirar dúvidas sobre os cursos de Inteligência Artificial e sobre as nossas soluções para empresas: atendente automático, sites, secretária virtual e diagnóstico. Como posso ajudar?");
       setTimeout(function () { txt.focus(); }, 50);
     } else abrir.focus();
   }
   abrir.addEventListener("click", function () { alternar(true); });
   $("chat-fechar").addEventListener("click", function () { alternar(false); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !box.hidden) alternar(false); });
+  if (abrirDireto) alternar(true);
   txt.addEventListener("keydown", function (e) { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -261,6 +266,8 @@
     if (document.getElementById("cookie-aviso")) return;
     var d = document.createElement("div");
     d.id = "cookie-aviso"; d.className = "cookie-aviso"; d.setAttribute("role", "dialog"); d.setAttribute("aria-label", "Aviso de cookies");
+    /* Quem chega pelo link do WhatsApp (?chat=1): aviso no topo, para não cobrir o campo de digitar */
+    if (new URLSearchParams(location.search).get("chat") === "1") { d.style.top = "0"; d.style.bottom = "auto"; }
     var p = document.createElement("p");
     p.textContent = "Usamos cookies para medir as visitas e mostrar anúncios da Becher Trader a quem já conhece o site. Você escolhe se aceita. ";
     var a = document.createElement("a"); a.href = "privacidade.html"; a.textContent = "Saiba mais";
