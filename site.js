@@ -181,7 +181,16 @@
   /* ---------- Balão de atendimento com IA ---------- */
   var box = $("chat-box"), abrir = $("chat-abrir");
   if (!box || !abrir) return;
-  var log = $("chat-log"), form = $("chat-form"), txt = $("chat-txt"), btn = $("chat-enviar"), historico = [];
+  var log = $("chat-log"), form = $("chat-form"), txt = $("chat-txt"), btn = $("chat-enviar"), historico = [], conversa = [];
+  /* A conversa fica guardada enquanto a aba estiver aberta: ao visitar um link do site e voltar, ela continua */
+  var CHAVE_CONVERSA = "bt_chat_v1", CHAVE_ORIGEM = "bt_chat_origem";
+  function lerSessao(k) { try { return sessionStorage.getItem(k); } catch (_) { return null; } }
+  function gravarSessao(k, v) { try { sessionStorage.setItem(k, v); } catch (_) {} }
+  function apagarSessao(k) { try { sessionStorage.removeItem(k); } catch (_) {} }
+  function salvarConversa() { gravarSessao(CHAVE_CONVERSA, JSON.stringify({ m: conversa.slice(-40), h: historico.slice(-6) })); }
+  /* Botão "Voltar à conversa" (página de demonstração) */
+  var voltarBox = $("voltar-conversa"), origemChat = lerSessao(CHAVE_ORIGEM);
+  if (voltarBox && origemChat) { voltarBox.querySelector("a").href = origemChat; voltarBox.hidden = false; }
   var ZAP = "https://wa.me/" + FONE + "?text=" + encodeURIComponent("Olá! Vim pelo atendimento do site da Becher Trader.");
   /* Link com ?chat=1 (saudação do WhatsApp Business): já abre o tira-dúvidas */
   var abrirDireto = new URLSearchParams(location.search).get("chat") === "1";
@@ -194,13 +203,17 @@
       el.appendChild(document.createTextNode(texto.slice(pos, m.index)));
       var a = document.createElement("a");
       a.href = alvo.indexOf("@") > 0 && !/^https?:/i.test(alvo) ? "mailto:" + alvo : (/^https?:/i.test(alvo) ? alvo : "https://" + alvo);
-      a.target = "_blank"; a.rel = "noopener"; a.textContent = alvo;
+      a.textContent = alvo;
+      /* Links do nosso site abrem na mesma aba (a seta Voltar funciona); os demais, em nova aba */
+      if (/^(?:https?:\/\/)?(?:www\.)?bechertrader\.com\.br(?:[\/#?]|$)/i.test(alvo)) {
+        a.addEventListener("click", function () { gravarSessao(CHAVE_ORIGEM, location.href); });
+      } else { a.target = "_blank"; a.rel = "noopener"; }
       el.appendChild(a);
       pos = m.index + alvo.length; re.lastIndex = pos;
     }
     el.appendChild(document.createTextNode(texto.slice(pos)));
   }
-  function add(de, texto, humano) {
+  function add(de, texto, humano, naoGuardar) {
     var d = document.createElement("div");
     d.className = "msg " + de + (humano ? " humano" : "");
     if (de === "bot") escreverComLinks(d, texto); else d.textContent = texto;
@@ -208,32 +221,44 @@
       var a = document.createElement("a"); a.href = ZAP; a.target = "_blank"; a.rel = "noopener"; a.className = "zap"; a.textContent = "Abrir o WhatsApp";
       d.appendChild(document.createElement("br")); d.appendChild(a);
     }
-    log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+    log.appendChild(d); log.scrollTop = log.scrollHeight;
+    if (!naoGuardar) { conversa.push({ de: de, t: texto, h: !!humano }); salvarConversa(); }
+    return d;
   }
   function alternar(mostrar) {
     box.hidden = !mostrar; abrir.hidden = mostrar; abrir.setAttribute("aria-expanded", String(mostrar));
     if (mostrar) {
       if (!log.childElementCount) add("bot", "Olá! Sou o assistente virtual da Becher Trader. Posso tirar dúvidas sobre o MENTHOR, o METHODUS, o GUARDIÃO, o GUARDIÃO REPLICADOR, o CONTEXTO, os cursos de Inteligência Artificial e as nossas soluções para empresas. Como posso ajudar?");
       setTimeout(function () { txt.focus(); }, 50);
-    } else abrir.focus();
+    } else {
+      if (lerSessao(CHAVE_ORIGEM) === location.href) apagarSessao(CHAVE_ORIGEM);
+      abrir.focus();
+    }
   }
   abrir.addEventListener("click", function () { alternar(true); });
   $("chat-fechar").addEventListener("click", function () { alternar(false); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !box.hidden) alternar(false); });
-  if (abrirDireto) alternar(true);
+  var salva = null;
+  try { salva = JSON.parse(lerSessao(CHAVE_CONVERSA) || "null"); } catch (_) {}
+  if (salva && salva.m) {
+    salva.m.forEach(function (x) { add(x.de, x.t, x.h, true); });
+    conversa = salva.m; historico = salva.h || [];
+  }
+  if (abrirDireto || (lerSessao(CHAVE_ORIGEM) === location.href && conversa.length)) { window.__btChatAuto = true; alternar(true); }
   txt.addEventListener("keydown", function (e) { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var pergunta = txt.value.trim();
     if (!pergunta || btn.disabled) return;
     add("eu", pergunta); txt.value = ""; btn.disabled = true;
-    var espera = add("bot", "Digitando...");
+    var espera = add("bot", "Digitando...", false, true);
     fetch(API_URL, { method: "POST", body: JSON.stringify({ pergunta: pergunta, historico: historico.slice(-6) }) })
       .then(function (r) { return r.json(); })
       .then(function (d) {
         espera.remove();
         add("bot", d.resposta || "Não consegui responder agora.", !!d.humano || !d.ok);
         historico.push({ de: "eu", texto: pergunta }, { de: "bot", texto: d.resposta || "" });
+        salvarConversa();
       })
       .catch(function () { espera.remove(); add("bot", "Não consegui responder agora. Tente de novo em instantes ou fale com a gente pelo WhatsApp.", true); })
       .then(function () { btn.disabled = false; txt.focus(); });
@@ -279,8 +304,8 @@
     if (document.getElementById("cookie-aviso")) return;
     var d = document.createElement("div");
     d.id = "cookie-aviso"; d.className = "cookie-aviso"; d.setAttribute("role", "dialog"); d.setAttribute("aria-label", "Aviso de cookies");
-    /* Quem chega pelo link do WhatsApp (?chat=1): aviso no topo, para não cobrir o campo de digitar */
-    if (new URLSearchParams(location.search).get("chat") === "1") { d.style.top = "0"; d.style.bottom = "auto"; }
+    /* Quando o Tira-dúvidas abre sozinho: aviso no topo, para não cobrir o campo de digitar */
+    if (window.__btChatAuto) { d.style.top = "0"; d.style.bottom = "auto"; }
     var p = document.createElement("p");
     p.textContent = "Usamos cookies para medir as visitas e mostrar anúncios da Becher Trader a quem já conhece o site. Você escolhe se aceita. ";
     var a = document.createElement("a"); a.href = "privacidade.html"; a.textContent = "Saiba mais";
