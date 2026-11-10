@@ -71,13 +71,20 @@
       fetch(API_URL, { method: "POST", body: JSON.stringify(d) })
         .then(function (r) { return r.json(); })
         .then(function (r) {
-          if (r.ok) { mostrar("ok", r.resposta || "Recebemos o seu contato. Vamos responder em breve."); f.reset(); zap.href = textoZap(dados()); }
+          if (r.ok) { registrarCadastro("contato"); mostrar("ok", r.resposta || "Recebemos o seu contato. Vamos responder em breve."); f.reset(); zap.href = textoZap(dados()); }
           else mostrar("erro", r.resposta || "Não foi possível enviar agora. Use o WhatsApp.");
         })
         .catch(function () { mostrar("erro", "Não foi possível enviar agora. Tente de novo ou use o WhatsApp."); })
         .then(function () { enviar.disabled = false; enviar.textContent = "Enviar contato"; });
     });
   }
+
+  /* ---------- Registro de cadastro (Pixel da Meta e Google), 10/11/2026 ----------
+     Só registra se o visitante aceitou os cookies; o cadastro vai para a planilha de qualquer forma. */
+  var registrarCadastro = function (origem) {
+    try { if (window.fbq) window.fbq("track", "Lead", { content_name: origem }); } catch (e) {}
+    try { if (window.gtag) window.gtag("event", "generate_lead", { form: origem }); } catch (e) {}
+  };
 
   /* ---------- Lista de interessados (página Cursos) ---------- */
   var fi = $("f-interesse");
@@ -106,7 +113,7 @@
       fetch(API_URL, { method: "POST", body: JSON.stringify(d) })
         .then(function (r) { return r.json(); })
         .then(function (r) {
-          if (r.ok) { avisar("ok", r.resposta || "Pronto! Você está na lista. Avisaremos quando a turma fechar."); fi.reset(); }
+          if (r.ok) { registrarCadastro("cursos"); avisar("ok", r.resposta || "Pronto! Você está na lista. Avisaremos quando a turma fechar."); fi.reset(); }
           else avisar("erro", r.resposta || "Não foi possível enviar agora. Fale com a gente pelo WhatsApp (41) 97607-5189.");
         })
         .catch(function () { avisar("erro", "Não foi possível enviar agora. Tente de novo ou fale com a gente pelo WhatsApp."); })
@@ -143,7 +150,7 @@
   if (fm && qsProd) fm.setAttribute("data-produto-padrao", qsProd.toUpperCase());
   marcarPadrao();
   if (fm) {
-    var mtel = $("m-tel"), mret = $("m-retorno"), menv = $("m-enviar");
+    var mtel = $("m-tel"), mret = $("m-retorno"), menv = $("m-enviar"); var menvTexto = menv.textContent;
     mtel.addEventListener("input", function () {
       var d = mtel.value.replace(/\D/g, "").slice(0, 11), s = d;
       if (d.length > 2) s = "(" + d.slice(0, 2) + ") " + d.slice(2);
@@ -170,11 +177,11 @@
       fetch(API_URL, { method: "POST", body: JSON.stringify(d) })
         .then(function (r) { return r.json(); })
         .then(function (r) {
-          if (r.ok) { mAvisar("ok", r.resposta || "Pronto! Você está na lista de lançamento. Avisaremos você no lançamento."); fm.reset(); marcarPadrao(); }
+          if (r.ok) { registrarCadastro("lista " + d.produtos.join(",")); mAvisar("ok", r.resposta || "Pronto! Você está na lista de lançamento. Avisaremos você no lançamento."); fm.reset(); marcarPadrao(); }
           else mAvisar("erro", r.resposta || "Não foi possível enviar agora. Tente de novo em instantes.");
         })
         .catch(function () { mAvisar("erro", "Não foi possível enviar agora. Tente de novo em instantes ou escreva para bechertrader@gmail.com."); })
-        .then(function () { menv.disabled = false; menv.textContent = "Entrar na lista"; });
+        .then(function () { menv.disabled = false; menv.textContent = menvTexto; });
     });
   }
 
