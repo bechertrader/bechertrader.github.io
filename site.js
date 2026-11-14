@@ -159,6 +159,12 @@
     });
     var qs = new URLSearchParams(location.search);
     var origemLink = qs.get("utm_source") || qs.get("origem") || qs.get("ref") || (document.referrer ? new URL(document.referrer).hostname : "direto");
+    /* 14/11/2026: quem vem do anúncio da Meta cai direto no cadastro; evento preenche "Como conheceu" */
+    if (qs.get("utm_campaign") === "profit_summit" && $("m-origem")) $("m-origem").value = "Profit Summit";
+    if (qs.get("utm_source") === "meta" && $("lista")) {
+      var irLista = function () { $("lista").scrollIntoView(); };
+      setTimeout(irLista, 60); window.addEventListener("load", function () { setTimeout(irLista, 60); });
+    }
     var mMarc = function (n) { return Array.prototype.map.call(fm.querySelectorAll('input[name="' + n + '"]:checked'), function (x) { return x.value; }); };
     var mAvisar = function (tipo, texto) { mret.hidden = false; mret.className = "msg-form " + tipo; mret.textContent = texto; };
     fm.addEventListener("submit", function (e) {
