@@ -285,7 +285,7 @@
      GOOGLE_TAG_ID  -> ID do Google Analytics/Ads (ex.: "G-XXXXXXXXXX" ou "AW-XXXXXXXXX")
    Sem nenhum ID preenchido, o aviso de cookies não aparece. */
 (function () {
-  var META_PIXEL_ID = "";
+  var META_PIXEL_ID = "1910746080287870";
   var GOOGLE_TAG_ID = "G-7L3DZFTHVD";
   var CHAVE = "bt_cookies_v1";
   if (!META_PIXEL_ID && !GOOGLE_TAG_ID) return;
